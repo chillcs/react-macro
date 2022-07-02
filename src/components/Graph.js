@@ -5,12 +5,6 @@ const Graph = () => {
 	return (
 		<>
 			<Section>
-				<Tabs>
-					<Tab>Today</Tab>
-					<Tab>Week</Tab>
-					<Tab>Month</Tab>
-					<Tab>Year</Tab>
-				</Tabs>
 				<Chart>
 					<Item>
 						<Bar>Xg</Bar>
@@ -25,6 +19,12 @@ const Graph = () => {
 						<Title>Protein</Title>
 					</Item>
 				</Chart>
+				<Tabs>
+					<Tab>Today</Tab>
+					<Tab>Week</Tab>
+					<Tab>Month</Tab>
+					<Tab>Year</Tab>
+				</Tabs>
 			</Section>
 		</>
 	);
@@ -39,21 +39,20 @@ export const Section = styled.div`
 	flex-direction: column;
 	justify-content: center;
 	width: 100%;
-	background: var(--medium);
 `;
 
 export const Tabs = styled.div`
 	display: flex;
 	width: 100%;
-	padding: 10px 15px;
-	margin: 50px 0;
-	background: var(--light);
+	padding: 25px 25px;
 `;
 
 export const Tab = styled.div`
 	display: flex;
 	justify-content: center;
 	width: 25%;
+	padding: 15px 15px;
+	background: red;
 `;
 
 export const Chart = styled.div`
@@ -61,7 +60,6 @@ export const Chart = styled.div`
 	justify-content: center;
 	width: 100%;
 	padding: 10px 15px;
-	background: var(--medium);
 `;
 
 export const Item = styled.div`
