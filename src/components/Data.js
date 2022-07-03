@@ -29,6 +29,7 @@ const Data = () => {
 						);
 					})}
 				</Column>
+				<Btn>Add</Btn>
 			</Section>
 		</>
 	);
@@ -40,9 +41,10 @@ export default Data;
 
 export const Section = styled.div`
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
+	gap: 25px;
 	width: 100%;
-	background: var(--light);
 `;
 
 export const Column = styled.div`
@@ -50,6 +52,7 @@ export const Column = styled.div`
 	flex-direction: column;
 	width: 100%;
 	padding: 15px;
+	background: var(--light);
 `;
 
 export const Headings = styled.div`
@@ -78,4 +81,12 @@ export const Cell = styled.div`
 	width: 20%;
 	padding: 2px 15px;
 	padding-left: 20px;
+`;
+
+export const Btn = styled.div`
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	padding: 15px;
+	background: var(--light);
 `;

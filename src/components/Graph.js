@@ -1,5 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
+import foods from '../data/Foods.json';
+
+const fatArr = [...foods.map((food) => food.fat)];
+const fatSum = fatArr.reduce((prev, current) => prev + current);
+
+const carbArr = [...foods.map((food) => food.carb)];
+const carbSum = carbArr.reduce((prev, current) => prev + current);
+
+const proteinArr = [...foods.map((food) => food.protein)];
+const proteinSum = proteinArr.reduce((prev, current) => prev + current);
 
 const Graph = () => {
 	return (
@@ -7,15 +17,15 @@ const Graph = () => {
 			<Section>
 				<Items>
 					<Item>
-						<Bar>Xg</Bar>
+						<Fat>{fatSum}g</Fat>
 						<Title>Fats</Title>
 					</Item>
 					<Item>
-						<Bar>Xg</Bar>
+						<Carb>{carbSum}g</Carb>
 						<Title>Carbs</Title>
 					</Item>
 					<Item>
-						<Bar>Xg</Bar>
+						<Protein>{proteinSum}g</Protein>
 						<Title>Protein</Title>
 					</Item>
 				</Items>
@@ -50,12 +60,35 @@ export const Item = styled.div`
 	width: 100px;
 `;
 
-export const Bar = styled.div`
+export const Fat = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	width: 50px;
-	height: 150px;
+	height: ${fatSum * 2}px;
+	min-height: 10px;
+	margin-bottom: 15px;
+	background: var(--light);
+`;
+
+export const Carb = styled.div`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 50px;
+	height: ${carbSum * 2}px;
+	min-height: 10px;
+	margin-bottom: 15px;
+	background: var(--light);
+`;
+
+export const Protein = styled.div`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 50px;
+	height: ${proteinSum * 2}px;
+	min-height: 10px;
 	margin-bottom: 15px;
 	background: var(--light);
 `;

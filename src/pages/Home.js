@@ -4,7 +4,6 @@ import Header from '../components/Header';
 import Tabs from '../components/Tabs';
 import Graph from '../components/Graph';
 import Data from '../components/Data';
-import Add from '../components/Add';
 import Footer from '../components/Footer';
 
 const Home = () => {
@@ -15,7 +14,6 @@ const Home = () => {
 				<Tabs />
 				<Graph />
 				<Data />
-				<Add />
 				<Footer />
 			</Page>
 		</>
