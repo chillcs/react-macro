@@ -1,32 +1,40 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Footer = () => {
+const Tabs = () => {
 	return (
 		<>
 			<Section>
-				<Item>Graph</Item>
-				<Item>Foods</Item>
-				<Item>Settings</Item>
+				<TabList>
+					<Tab>Today</Tab>
+					<Tab>Week</Tab>
+					<Tab>Month</Tab>
+					<Tab>Year</Tab>
+				</TabList>
 			</Section>
 		</>
 	);
 };
 
-export default Footer;
+export default Tabs;
 
 /* Styles --- */
 
 export const Section = styled.div`
 	display: flex;
-	justify-content: space-between;
+	flex-direction: column;
+	justify-content: center;
 	width: 100%;
 `;
 
-export const Item = styled.div`
+export const TabList = styled.div`
+	display: flex;
+	width: 100%;
+`;
+
+export const Tab = styled.div`
 	display: flex;
 	justify-content: center;
-	align-items: center;
 	width: 100%;
 	padding: 15px;
 	background: var(--light);

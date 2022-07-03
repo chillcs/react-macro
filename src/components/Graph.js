@@ -5,7 +5,7 @@ const Graph = () => {
 	return (
 		<>
 			<Section>
-				<Chart>
+				<Items>
 					<Item>
 						<Bar>Xg</Bar>
 						<Title>Fats</Title>
@@ -18,13 +18,7 @@ const Graph = () => {
 						<Bar>Xg</Bar>
 						<Title>Protein</Title>
 					</Item>
-				</Chart>
-				<Tabs>
-					<Tab>Today</Tab>
-					<Tab>Week</Tab>
-					<Tab>Month</Tab>
-					<Tab>Year</Tab>
-				</Tabs>
+				</Items>
 			</Section>
 		</>
 	);
@@ -41,25 +35,10 @@ export const Section = styled.div`
 	width: 100%;
 `;
 
-export const Tabs = styled.div`
-	display: flex;
-	width: 100%;
-	padding: 25px 25px;
-`;
-
-export const Tab = styled.div`
-	display: flex;
-	justify-content: center;
-	width: 25%;
-	padding: 15px 15px;
-	background: red;
-`;
-
-export const Chart = styled.div`
+export const Items = styled.div`
 	display: flex;
 	justify-content: center;
 	width: 100%;
-	padding: 10px 15px;
 `;
 
 export const Item = styled.div`
@@ -68,19 +47,19 @@ export const Item = styled.div`
 	justify-content: flex-end;
 	align-items: center;
 	text-align: center;
-	width: 75px;
-	height: 200px;
+	width: 100px;
 `;
 
 export const Bar = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 25px;
-	height: 100px;
+	width: 50px;
+	height: 150px;
+	margin-bottom: 15px;
 	background: var(--light);
 `;
 
 export const Title = styled.div`
-	padding: 10px 5px;
+	padding: 0 5px;
 `;

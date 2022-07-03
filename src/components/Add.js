@@ -1,32 +1,29 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Footer = () => {
+const Add = () => {
 	return (
 		<>
 			<Section>
-				<Item>Graph</Item>
-				<Item>Foods</Item>
-				<Item>Settings</Item>
+				<Btn>Add</Btn>
 			</Section>
 		</>
 	);
 };
 
-export default Footer;
+export default Add;
 
 /* Styles --- */
 
 export const Section = styled.div`
 	display: flex;
-	justify-content: space-between;
+	justify-content: center;
 	width: 100%;
 `;
 
-export const Item = styled.div`
+export const Btn = styled.div`
 	display: flex;
 	justify-content: center;
-	align-items: center;
 	width: 100%;
 	padding: 15px;
 	background: var(--light);

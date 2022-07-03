@@ -19,7 +19,7 @@ export default Header;
 export const Section = styled.div`
 	position: relative;
 	width: 100%;
-	height: 100px;
+	height: 50px;
 `;
 
 export const Title = styled.div`
@@ -27,13 +27,14 @@ export const Title = styled.div`
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
+	font-size: 25px;
 `;
 
 export const Profile = styled.div`
 	position: absolute;
 	top: 50%;
 	right: 0%;
-	transform: translate(-50%, -50%);
-	padding: 25px 25px;
-	background: red;
+	transform: translate(0, -50%);
+	padding: 15px;
+	background: var(--light);
 `;
