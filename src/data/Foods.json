@@ -2,28 +2,28 @@
    {
       "id": 0,
       "name": "Bison",
-      "amount": 8,
+      "amount": 4,
       "unit": "oz",
-      "fat": 12,
+      "fat": 6,
       "carb": 0,
-      "protein": 34
+      "protein": 17
    },
    {
       "id": 1,
       "name": "Egg",
-      "amount": 3,
+      "amount": 1,
       "unit": "ea",
-      "fat": 15,
+      "fat": 5,
       "carb": 0,
-      "protein": 18
+      "protein": 6
    },
    {
       "id": 2,
       "name": "Bread",
-      "amount": 2,
+      "amount": 1,
       "unit": "pc",
-      "fat": 2,
-      "carb": 24,
-      "protein": 6
+      "fat": 1,
+      "carb": 12,
+      "protein": 3
    }
 ]

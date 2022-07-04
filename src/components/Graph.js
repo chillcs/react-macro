@@ -2,14 +2,17 @@ import React from 'react';
 import styled from 'styled-components';
 import foods from '../data/Foods.json';
 
-const fatArr = [...foods.map((food) => food.fat)];
-const fatSum = fatArr.reduce((prev, current) => prev + current);
+const FAT_SUM = [...foods.map((food) => food.fat)].reduce(
+	(prev, current) => prev + current
+);
 
-const carbArr = [...foods.map((food) => food.carb)];
-const carbSum = carbArr.reduce((prev, current) => prev + current);
+const CARB_SUM = [...foods.map((food) => food.carb)].reduce(
+	(prev, current) => prev + current
+);
 
-const proteinArr = [...foods.map((food) => food.protein)];
-const proteinSum = proteinArr.reduce((prev, current) => prev + current);
+const PROTEIN_SUM = [...foods.map((food) => food.protein)].reduce(
+	(prev, current) => prev + current
+);
 
 const Graph = () => {
 	return (
@@ -17,15 +20,15 @@ const Graph = () => {
 			<Section>
 				<Items>
 					<Item>
-						<Fat>{fatSum}g</Fat>
-						<Title>Fats</Title>
+						<Fat>{FAT_SUM}g</Fat>
+						<Title>Fat</Title>
 					</Item>
 					<Item>
-						<Carb>{carbSum}g</Carb>
-						<Title>Carbs</Title>
+						<Carb>{CARB_SUM}g</Carb>
+						<Title>Carb</Title>
 					</Item>
 					<Item>
-						<Protein>{proteinSum}g</Protein>
+						<Protein>{PROTEIN_SUM}g</Protein>
 						<Title>Protein</Title>
 					</Item>
 				</Items>
@@ -65,7 +68,7 @@ export const Fat = styled.div`
 	justify-content: center;
 	align-items: center;
 	width: 50px;
-	height: ${fatSum * 2}px;
+	height: ${FAT_SUM * 2}px;
 	min-height: 10px;
 	margin-bottom: 15px;
 	background: var(--light);
@@ -76,7 +79,7 @@ export const Carb = styled.div`
 	justify-content: center;
 	align-items: center;
 	width: 50px;
-	height: ${carbSum * 2}px;
+	height: ${CARB_SUM * 2}px;
 	min-height: 10px;
 	margin-bottom: 15px;
 	background: var(--light);
@@ -87,7 +90,7 @@ export const Protein = styled.div`
 	justify-content: center;
 	align-items: center;
 	width: 50px;
-	height: ${proteinSum * 2}px;
+	height: ${PROTEIN_SUM * 2}px;
 	min-height: 10px;
 	margin-bottom: 15px;
 	background: var(--light);

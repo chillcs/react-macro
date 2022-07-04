@@ -2,10 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import foods from '../data/Foods.json';
 
-const Data = ({ toggle }) => {
+const SelectFood = ({ isOpen, toggle }) => {
 	return (
 		<>
-			<Section>
+			<Section isOpen={isOpen}>
 				<Column>
 					<Headings>
 						<Heading>Name</Heading>
@@ -29,22 +29,32 @@ const Data = ({ toggle }) => {
 						);
 					})}
 				</Column>
-				<Btn onClick={toggle}>Add</Btn>
+				<Btn onClick={toggle}>Return</Btn>
 			</Section>
 		</>
 	);
 };
 
-export default Data;
+export default SelectFood;
 
 /* Styles --- */
 
-export const Section = styled.div`
+export const Section = styled.aside`
+	z-index: 100;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	gap: 25px;
-	width: 100%;
+	align-items: center;
+	gap: 10%;
+	background: var(--medium);
+	transition: 0.3s ease-in-out;
+	top: ${({ isOpen }) => (isOpen ? '0' : '-100%')};
+	opacity: ${({ isOpen }) => (isOpen ? '100%' : '0%')};
 `;
 
 export const Column = styled.div`
