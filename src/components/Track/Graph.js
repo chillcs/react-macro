@@ -1,16 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
-import foods from '../data/Foods.json';
+import FOODS_DATA from '../../data/Foods.json';
 
-const FAT_SUM = [...foods.map((food) => food.fat)].reduce(
+const FAT_SUM = [...FOODS_DATA.map((food) => food.fat)].reduce(
 	(prev, current) => prev + current
 );
 
-const CARB_SUM = [...foods.map((food) => food.carb)].reduce(
+const CARB_SUM = [...FOODS_DATA.map((food) => food.carb)].reduce(
 	(prev, current) => prev + current
 );
 
-const PROTEIN_SUM = [...foods.map((food) => food.protein)].reduce(
+const PROTEIN_SUM = [...FOODS_DATA.map((food) => food.protein)].reduce(
 	(prev, current) => prev + current
 );
 

@@ -1,11 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import foods from '../data/Foods.json';
+import FOODS_DATA from '../../data/Foods.json';
+import { Button } from '../Reusable';
 
-const SelectFood = ({ isOpen, toggle }) => {
+const Chart = () => {
 	return (
 		<>
-			<Section isOpen={isOpen}>
+			<Section>
 				<Column>
 					<Headings>
 						<Heading>Name</Heading>
@@ -14,7 +15,7 @@ const SelectFood = ({ isOpen, toggle }) => {
 						<Heading>Carb</Heading>
 						<Heading>Protein</Heading>
 					</Headings>
-					{foods.map((food) => {
+					{FOODS_DATA.map((food) => {
 						return (
 							<Row key={food.id}>
 								<Cell>{food.name}</Cell>
@@ -29,32 +30,22 @@ const SelectFood = ({ isOpen, toggle }) => {
 						);
 					})}
 				</Column>
-				<Btn onClick={toggle}>Return</Btn>
+				<Button>Add</Button>
 			</Section>
 		</>
 	);
 };
 
-export default SelectFood;
+export default Chart;
 
 /* Styles --- */
 
-export const Section = styled.aside`
-	z-index: 100;
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
+export const Section = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	align-items: center;
-	gap: 10%;
-	background: var(--medium);
-	transition: 0.3s ease-in-out;
-	top: ${({ isOpen }) => (isOpen ? '0' : '-100%')};
-	opacity: ${({ isOpen }) => (isOpen ? '100%' : '0%')};
+	gap: 25px;
+	width: 100%;
 `;
 
 export const Column = styled.div`
@@ -91,12 +82,4 @@ export const Cell = styled.div`
 	width: 20%;
 	padding: 2px 15px;
 	padding-left: 20px;
-`;
-
-export const Btn = styled.div`
-	display: flex;
-	justify-content: center;
-	width: 100%;
-	padding: 15px;
-	background: var(--light);
 `;

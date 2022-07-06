@@ -1,27 +1,29 @@
 import React from 'react';
 import styled from 'styled-components';
-import SelectFood from '../components/SelectFood';
 import Header from '../components/Header';
-import Tabs from '../components/Tabs';
-import Graph from '../components/Graph';
-import Data from '../components/Data';
+import Track from '../components/Track/index';
+import Foods from '../components/Foods/index';
 import Footer from '../components/Footer';
 
 const Home = () => {
-	const [isOpen, setIsOpen] = React.useState(false);
+	const [isOpen, setIsOpen] = React.useState(true);
 	const toggle = () => {
 		setIsOpen(!isOpen);
 	};
 	return (
 		<>
-			<SelectFood isOpen={isOpen} toggle={toggle} />
-			<Page>
-				<Header />
-				<Tabs />
-				<Graph />
-				<Data toggle={toggle} />
-				<Footer />
-			</Page>
+			<App>
+				<FixHeader>
+					<Header />
+				</FixHeader>
+				<Body>
+					<Track />
+					<Foods isOpen={isOpen} toggle={toggle} />
+				</Body>
+				<FixFooter>
+					<Footer />
+				</FixFooter>
+			</App>
 		</>
 	);
 };
@@ -30,13 +32,33 @@ export default Home;
 
 /* Styles --- */
 
-export const Page = styled.div`
+export const App = styled.div`
+	position: relative;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	gap: 25px;
-	width: 100%;
-	min-height: 100vh;
+	height: 100vh;
 	padding: 15px;
 	background: var(--medium);
+`;
+
+export const FixHeader = styled.div`
+	position: fixed;
+	top: 0%;
+	left: 0%;
+	width: 100%;
+`;
+
+export const Body = styled.div`
+	position: absolute;
+	top: 80px;
+	left: 0%;
+	width: 100%;
+`;
+
+export const FixFooter = styled.div`
+	position: fixed;
+	bottom: 0%;
+	left: 0%;
+	width: 100%;
 `;

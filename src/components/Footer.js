@@ -5,7 +5,7 @@ const Footer = () => {
 	return (
 		<>
 			<Section>
-				<Item>Graph</Item>
+				<Item>Track</Item>
 				<Item>Foods</Item>
 				<Item>Settings</Item>
 			</Section>
@@ -21,6 +21,8 @@ export const Section = styled.div`
 	display: flex;
 	justify-content: space-between;
 	width: 100%;
+	height: 50px;
+	background: var(--dark);
 `;
 
 export const Item = styled.div`
@@ -29,5 +31,5 @@ export const Item = styled.div`
 	align-items: center;
 	width: 100%;
 	padding: 15px;
-	background: var(--light);
+	color: var(--light);
 `;
