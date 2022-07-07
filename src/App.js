@@ -1,10 +1,10 @@
 import React from 'react';
-import Home from '../src/pages/Home';
+import Dashboard from './components/Dashboard';
 
 function App() {
 	return (
 		<>
-			<Home />
+			<Dashboard />
 		</>
 	);
 }

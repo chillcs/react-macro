@@ -1,49 +1,62 @@
 import React from 'react';
 import styled from 'styled-components';
-import FOODS_DATA from '../../data/Foods.json';
+import FOOD_DATA from '../Data.json';
 
-const FoodList = () => {
+const Foods = ({ active }) => {
 	return (
 		<>
-			<Section>
-				<Column>
-					<Headings>
-						<Heading>Name</Heading>
-						<Heading>Amount</Heading>
-						<Heading>Unit</Heading>
-						<Heading>Fat (g)</Heading>
-						<Heading>Carb (g)</Heading>
-						<Heading>Protein (g)</Heading>
-					</Headings>
-					{FOODS_DATA.map((food) => {
-						return (
-							<Row key={food.id}>
-								<Cell>{food.name}</Cell>
-								<Cell>{food.amount}</Cell>
-								<Cell>{food.unit}</Cell>
-								<Cell>{food.fat}</Cell>
-								<Cell>{food.carb}</Cell>
-								<Cell>{food.protein}</Cell>
-							</Row>
-						);
-					})}
-					<FormGroup>
-						<Input type="text" placeholder="Name" />
-						<Input type="text" placeholder="Amount" />
-						<Input type="text" placeholder="Unit" />
-						<Input type="text" placeholder="Fat" />
-						<Input type="text" placeholder="Carb" />
-						<Input type="text" placeholder="Protein" />
-					</FormGroup>
-				</Column>
-			</Section>
+			<Page active={active}>
+				<Section>
+					<Column>
+						<Headings>
+							<Heading>Name</Heading>
+							<Heading>Amount</Heading>
+							<Heading>Unit</Heading>
+							<Heading>Fat (g)</Heading>
+							<Heading>Carb (g)</Heading>
+							<Heading>Protein (g)</Heading>
+						</Headings>
+						{FOOD_DATA.map((food) => {
+							return (
+								<Row key={food.id}>
+									<Cell>{food.name}</Cell>
+									<Cell>{food.amount}</Cell>
+									<Cell>{food.unit}</Cell>
+									<Cell>{food.fat}</Cell>
+									<Cell>{food.carb}</Cell>
+									<Cell>{food.protein}</Cell>
+								</Row>
+							);
+						})}
+						<FormGroup>
+							<Input type="text" placeholder="Name" />
+							<Input type="text" placeholder="Amount" />
+							<Input type="text" placeholder="Unit" />
+							<Input type="text" placeholder="Fat" />
+							<Input type="text" placeholder="Carb" />
+							<Input type="text" placeholder="Protein" />
+						</FormGroup>
+					</Column>
+				</Section>
+			</Page>
 		</>
 	);
 };
 
-export default FoodList;
+export default Foods;
 
 /* Styles --- */
+
+export const Page = styled.div`
+	display: ${({ active }) => (active ? 'flex' : 'none')};
+	flex-direction: column;
+	justify-content: space-between;
+	gap: 25px;
+	width: 100%;
+	min-height: 100%;
+	padding: 15px;
+	background: var(--medium);
+`;
 
 export const Section = styled.aside`
 	z-index: 100;

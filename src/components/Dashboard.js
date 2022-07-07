@@ -1,10 +1,9 @@
 import React from 'react';
 import { useState } from 'react';
 import styled from 'styled-components';
-import Header from '../components/Header';
-import Settings from '../components/Settings/index';
-import Track from '../components/Track/index';
-import Foods from '../components/Foods/index';
+import Settings from './Settings/index';
+import Track from './Tracker/index';
+import Food from './Food/index';
 
 const Home = () => {
 	const [active, setActive] = useState(0);
@@ -17,11 +16,14 @@ const Home = () => {
 		<>
 			<App>
 				<HeaderPosition>
-					<Header />
+					<Header>
+						<Title>Macro</Title>
+						<Profile>O</Profile>
+					</Header>
 				</HeaderPosition>
 				<Body>
 					<Track active={active} />
-					<Foods />
+					<Food />
 					<Settings />
 				</Body>
 				<FooterPosition>
@@ -61,6 +63,32 @@ export const HeaderPosition = styled.div`
 	top: 0%;
 	left: 0%;
 	width: 100%;
+`;
+
+export const Header = styled.div`
+	position: relative;
+	width: 100%;
+	height: 80px;
+	background: var(--dark);
+`;
+
+export const Title = styled.div`
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	font-size: 25px;
+	color: var(--light);
+`;
+
+export const Profile = styled.div`
+	position: absolute;
+	top: 50%;
+	right: 0%;
+	transform: translate(0, -50%);
+	padding: 15px;
+	margin-right: 15px;
+	background: var(--light);
 `;
 
 export const Body = styled.div`

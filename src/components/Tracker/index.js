@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import Tabs from '../Track/Tabs';
-import Graph from '../Track/Graph';
-import Chart from '../Track/Chart';
+import Tabs from './Tabs';
+import Graph from './Graph';
+import Chart from './Chart';
 
 const Track = (props) => {
 	return (

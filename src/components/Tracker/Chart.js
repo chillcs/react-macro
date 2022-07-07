@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import FOODS_DATA from '../../data/Foods.json';
+import FOOD_DATA from '../Data.json';
 import { Button } from '../Reusable';
 
 const Chart = () => {
@@ -15,7 +15,7 @@ const Chart = () => {
 						<Heading>Carb</Heading>
 						<Heading>Protein</Heading>
 					</Headings>
-					{FOODS_DATA.map((food) => {
+					{FOOD_DATA.map((food) => {
 						return (
 							<Row key={food.id}>
 								<Cell>{food.name}</Cell>
