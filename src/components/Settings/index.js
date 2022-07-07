@@ -1,18 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
-import FoodList from '../Foods/FoodList';
 
-const Foods = ({ active }) => {
+const Settings = ({ active }) => {
 	return (
 		<>
-			<Page active={active}>
-				<FoodList />
-			</Page>
+			<Page active={active}>Some text</Page>
 		</>
 	);
 };
 
-export default Foods;
+export default Settings;
 
 /* Styles --- */
 
@@ -22,7 +19,7 @@ export const Page = styled.div`
 	justify-content: space-between;
 	gap: 25px;
 	width: 100%;
-	min-height: 100%;
+	height: calc(100vh - 80px - 50px);
 	padding: 15px;
-	background: var(--medium);
+	overflow: auto;
 `;

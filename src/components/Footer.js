@@ -1,13 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Footer = () => {
+const Footer = ({ openTab }) => {
 	return (
 		<>
 			<Section>
-				<Item>Track</Item>
-				<Item>Foods</Item>
-				<Item>Settings</Item>
+				<Button id={0} onClick={openTab}>
+					Track
+				</Button>
+				<Button id={1} onClick={openTab}>
+					Foods
+				</Button>
+				<Button id={2} onClick={openTab}>
+					Settings
+				</Button>
 			</Section>
 		</>
 	);
@@ -25,7 +31,7 @@ export const Section = styled.div`
 	background: var(--dark);
 `;
 
-export const Item = styled.div`
+export const Button = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;

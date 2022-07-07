@@ -4,10 +4,10 @@ import Tabs from '../Track/Tabs';
 import Graph from '../Track/Graph';
 import Chart from '../Track/Chart';
 
-const Track = () => {
+const Track = (props) => {
 	return (
 		<>
-			<Page>
+			<Page id={0} active={props.active}>
 				<Tabs />
 				<Graph />
 				<Chart />
@@ -15,13 +15,12 @@ const Track = () => {
 		</>
 	);
 };
-
 export default Track;
 
 /* Styles --- */
 
 export const Page = styled.div`
-	display: flex;
+	display: ${({ active }) => (active === 0 ? 'flex' : 'none')};
 	flex-direction: column;
 	justify-content: space-between;
 	gap: 25px;
