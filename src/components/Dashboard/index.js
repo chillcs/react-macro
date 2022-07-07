@@ -17,11 +17,11 @@ import Food from '../Dashboard/Food/index';
 import Settings from '../Dashboard/Settings/index';
 
 const Home = () => {
-	const [active, setActive] = useState(0);
-	const openTab = (event) => {
+	const [active, setActive] = useState(1);
+	function openTab(event) {
 		const target = event.currentTarget.id;
-		setActive(active === target ? active : target);
-	};
+		setActive((active) => (active === target ? active : target));
+	}
 	console.log(active);
 	return (
 		<>
@@ -29,24 +29,26 @@ const Home = () => {
 				<Header>
 					<Navbar>
 						<Title>Macro</Title>
-						<Btn>O</Btn>
+						<Btn id={0} onClick={openTab}>
+							Profile
+						</Btn>
 					</Navbar>
 				</Header>
 				<Body>
-					<Profile />
-					<Tracker />
-					<Food />
-					<Settings />
+					{parseInt(active) === 0 && <Profile />}
+					{parseInt(active) === 1 && <Tracker />}
+					{parseInt(active) === 2 && <Food />}
+					{parseInt(active) === 3 && <Settings />}
 				</Body>
 				<Footer>
 					<TabList>
-						<Tab id={0} onClick={openTab}>
+						<Tab id={1} onClick={openTab}>
 							Tracker
 						</Tab>
-						<Tab id={1} onClick={openTab}>
+						<Tab id={2} onClick={openTab}>
 							Food
 						</Tab>
-						<Tab id={2} onClick={openTab}>
+						<Tab id={3} onClick={openTab}>
 							Settings
 						</Tab>
 					</TabList>

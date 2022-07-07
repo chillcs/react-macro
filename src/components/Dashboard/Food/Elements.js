@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Page = styled.div`
-	display: none;
+	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 	gap: 25px;
