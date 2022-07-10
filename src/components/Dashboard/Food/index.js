@@ -1,14 +1,5 @@
 import React from 'react';
-import {
-	Page,
-	Column,
-	Headings,
-	Heading,
-	Row,
-	Cell,
-	FormGroup,
-	Input,
-} from './Elements';
+import { Page, Column, Headings, Heading, Row, Cell, Btn } from './Elements';
 import FOOD_DATA from '../../Data.json';
 
 const Food = () => {
@@ -36,15 +27,12 @@ const Food = () => {
 							</Row>
 						);
 					})}
-					<FormGroup>
-						<Input type="text" placeholder="Name" />
-						<Input type="text" placeholder="Amount" />
-						<Input type="text" placeholder="Unit" />
-						<Input type="text" placeholder="Fat" />
-						<Input type="text" placeholder="Carb" />
-						<Input type="text" placeholder="Protein" />
-					</FormGroup>
 				</Column>
+				<Btn>Create a new food</Btn>
+				<form>
+					<input type="text" />
+					<input type="submit" value="Submit"></input>
+				</form>
 			</Page>
 		</>
 	);

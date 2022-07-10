@@ -47,17 +47,11 @@ export const Cell = styled.div`
 	padding-left: 20px;
 `;
 
-export const FormGroup = styled.div`
+export const Btn = styled.div`
 	display: flex;
+	justify-content: center;
+	text-align: center;
 	width: 100%;
-	margin: 5px 0;
-`;
-
-export const Input = styled.input`
-	display: flex;
-	justify-content: flex-start;
-	text-align: left;
-	width: 20%;
-	margin: 0 5px;
-	padding: 2px 15px;
+	padding: 15px;
+	background: var(--light);
 `;
