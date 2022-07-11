@@ -15,9 +15,9 @@ import {
 } from './Elements';
 
 const Food = () => {
-	const [name, setName] = useState('');
+	const [name, setName] = useState('No name');
 	const [amount, setAmount] = useState(0);
-	const [unit, setUnit] = useState('');
+	const [unit, setUnit] = useState('ea');
 	const [fat, setFat] = useState(0);
 	const [carb, setCarb] = useState(0);
 	const [protein, setProtein] = useState(0);
