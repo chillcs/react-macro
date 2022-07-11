@@ -6,14 +6,15 @@ export const Page = styled.div`
 	justify-content: space-between;
 	gap: 25px;
 	width: 100%;
-	min-height: 100%;
+	height: calc(100vh - 80px - 50px);
 	padding: 15px;
-	background: var(--medium);
+	overflow: auto;
 `;
 
 export const Column = styled.div`
 	display: flex;
 	flex-direction: column;
+	gap: 5px;
 	width: 100%;
 	padding: 15px;
 	background: var(--light);
@@ -29,8 +30,6 @@ export const Heading = styled.div`
 	display: flex;
 	justify-content: flex-start;
 	text-align: left;
-	width: 20%;
-	padding: 0 15px;
 `;
 
 export const Row = styled.div`
@@ -41,10 +40,18 @@ export const Row = styled.div`
 export const Cell = styled.div`
 	display: flex;
 	justify-content: flex-start;
+	align-items: center;
 	text-align: left;
-	width: 20%;
-	padding: 2px 15px;
-	padding-left: 20px;
+	padding-left: 5px;
+`;
+
+export const Delete = styled.div`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-left: 5%;
+	padding: 3px 8px;
+	background: var(--medium);
 `;
 
 export const Btn = styled.div`
@@ -54,4 +61,17 @@ export const Btn = styled.div`
 	width: 100%;
 	padding: 15px;
 	background: var(--light);
+`;
+
+export const Form = styled.div`
+	display: flex;
+	flex-direction: column;
+	padding: 15px;
+	background: var(--light);
+`;
+
+export const Input = styled.input`
+	width: 100%;
+	padding: 5px 5px;
+	margin: 5px 0;
 `;
