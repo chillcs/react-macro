@@ -21,8 +21,8 @@ const Food = () => {
 	const [fat, setFat] = useState(0);
 	const [carb, setCarb] = useState(0);
 	const [protein, setProtein] = useState(0);
-
 	const [foodList, setFoodList] = useState([]);
+	const [isOpen, setIsOpen] = useState(false);
 
 	const addFood = () => {
 		Axios.post('http://localhost:3001/create', {
@@ -52,6 +52,7 @@ const Food = () => {
 			setFoodList(response.data);
 		});
 	};
+	getFood();
 
 	const deleteFood = (id) => {
 		Axios.delete(`http://localhost:3001/delete/${id}`).then((response) => {
@@ -61,6 +62,10 @@ const Food = () => {
 				})
 			);
 		});
+	};
+
+	const toggle = () => {
+		setIsOpen(!isOpen);
 	};
 
 	return (
@@ -95,52 +100,56 @@ const Food = () => {
 						);
 					})}
 				</Column>
-				<Btn onClick={getFood}>Update</Btn>
-				<Form>
-					<Input
-						type="text"
-						placeholder="Name"
-						onChange={(event) => {
-							setName(event.target.value);
-						}}
-					/>
-					<Input
-						type="number"
-						placeholder="Amount"
-						onChange={(event) => {
-							setAmount(event.target.value);
-						}}
-					/>
-					<Input
-						type="text"
-						placeholder="Unit"
-						onChange={(event) => {
-							setUnit(event.target.value);
-						}}
-					/>
-					<Input
-						type="number"
-						placeholder="Fat (g)"
-						onChange={(event) => {
-							setFat(event.target.value);
-						}}
-					/>
-					<Input
-						type="number"
-						placeholder="Carb (g)"
-						onChange={(event) => {
-							setCarb(event.target.value);
-						}}
-					/>
-					<Input
-						type="number"
-						placeholder="Protein (g)"
-						onChange={(event) => {
-							setProtein(event.target.value);
-						}}
-					/>
-					<Input type="submit" value="Submit" onClick={addFood}></Input>
-				</Form>
+				<Btn onClick={toggle}>Create a new food</Btn>
+				{isOpen ? (
+					<Form>
+						<Input
+							type="text"
+							placeholder="Name"
+							onChange={(event) => {
+								setName(event.target.value);
+							}}
+						/>
+						<Input
+							type="number"
+							placeholder="Amount"
+							onChange={(event) => {
+								setAmount(event.target.value);
+							}}
+						/>
+						<Input
+							type="text"
+							placeholder="Unit"
+							onChange={(event) => {
+								setUnit(event.target.value);
+							}}
+						/>
+						<Input
+							type="number"
+							placeholder="Fat (g)"
+							onChange={(event) => {
+								setFat(event.target.value);
+							}}
+						/>
+						<Input
+							type="number"
+							placeholder="Carb (g)"
+							onChange={(event) => {
+								setCarb(event.target.value);
+							}}
+						/>
+						<Input
+							type="number"
+							placeholder="Protein (g)"
+							onChange={(event) => {
+								setProtein(event.target.value);
+							}}
+						/>
+						<Input type="submit" value="Submit" onClick={addFood}></Input>
+					</Form>
+				) : (
+					<div></div>
+				)}
 			</Page>
 		</>
 	);
