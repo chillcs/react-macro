@@ -45,6 +45,7 @@ const Food = () => {
 				},
 			]);
 		});
+		toggle();
 	};
 
 	const getFood = () => {
@@ -145,7 +146,7 @@ const Food = () => {
 								setProtein(event.target.value);
 							}}
 						/>
-						<Input type="submit" value="Submit" onClick={addFood}></Input>
+						<Input type="submit" value="Add Food" onClick={addFood}></Input>
 					</Form>
 				) : (
 					<div></div>
