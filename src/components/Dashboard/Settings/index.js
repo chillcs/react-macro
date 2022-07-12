@@ -1,5 +1,5 @@
 import React from 'react';
-import { Page } from '../Settings/Elements';
+import { Page } from '../../Reusable';
 
 const Settings = () => {
 	return (

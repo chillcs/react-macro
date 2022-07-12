@@ -37,9 +37,12 @@ export const Btn = styled.div`
 	top: 50%;
 	right: 0%;
 	transform: translate(0, -50%);
-	padding: 15px;
-	margin-right: 15px;
+	padding: 20px;
+	margin-right: 10px;
 	background: var(--light);
+	&:hover {
+		cursor: pointer;
+	}
 `;
 
 export const Body = styled.div`
@@ -67,6 +70,9 @@ export const Tab = styled.div`
 	justify-content: center;
 	align-items: center;
 	width: 100%;
-	padding: 15px;
+	padding: 15px 10px;
 	color: var(--light);
+	&:hover {
+		cursor: pointer;
+	}
 `;

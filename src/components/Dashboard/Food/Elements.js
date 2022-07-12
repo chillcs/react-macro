@@ -1,56 +1,53 @@
 import styled from 'styled-components';
 
-export const Page = styled.div`
-	display: flex;
-	flex-direction: column;
-	gap: 25px;
-	width: 100%;
-	height: calc(100vh - 80px - 50px);
-	padding: 15px;
-	overflow: auto;
-`;
-
 export const Column = styled.div`
 	display: flex;
 	flex-direction: column;
-	gap: 5px;
 	width: 100%;
-	padding: 15px;
+	padding: 10px 10px;
+	padding-bottom: 5px;
 	background: var(--light);
 `;
 
 export const Headings = styled.div`
 	display: flex;
 	width: 100%;
-	padding-bottom: 15px;
+	padding-bottom: 10px;
 `;
 
 export const Heading = styled.div`
 	display: flex;
 	justify-content: flex-start;
 	text-align: left;
+	font-size: var(--p);
 `;
 
 export const Row = styled.div`
 	display: flex;
 	width: 100%;
+	padding: 5px 0;
+	border-bottom: 1px solid var(--medium);
+	&:last-of-type {
+		border-bottom: none;
+	}
 `;
 
 export const Cell = styled.div`
 	display: flex;
 	justify-content: flex-start;
-	align-items: center;
 	text-align: left;
 	padding-left: 5px;
+	font-size: var(--xs);
 `;
 
 export const Delete = styled.div`
 	display: flex;
 	justify-content: center;
-	align-items: center;
-	margin-left: 5%;
-	padding: 3px 8px;
-	background: var(--medium);
+	margin-left: 10px;
+	font-size: var(--xs);
+	&:hover {
+		cursor: pointer;
+	}
 `;
 
 export const Btn = styled.div`
@@ -58,14 +55,18 @@ export const Btn = styled.div`
 	justify-content: center;
 	text-align: center;
 	width: 100%;
-	padding: 15px;
+	padding: 10px;
 	background: var(--light);
+	font-size: var(--p);
+	&:hover {
+		cursor: pointer;
+	}
 `;
 
 export const Form = styled.div`
 	display: flex;
 	flex-direction: column;
-	padding: 15px;
+	padding: 10px;
 	background: var(--light);
 `;
 
@@ -73,4 +74,5 @@ export const Input = styled.input`
 	width: 100%;
 	padding: 5px 5px;
 	margin: 5px 0;
+	font-size: var(--p);
 `;

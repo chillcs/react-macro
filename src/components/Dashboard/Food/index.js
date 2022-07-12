@@ -1,8 +1,8 @@
 import React from 'react';
 import { useState } from 'react';
 import Axios from 'axios';
+import { Page } from '../../Reusable';
 import {
-	Page,
 	Column,
 	Headings,
 	Heading,
@@ -74,7 +74,7 @@ const Food = () => {
 			<Page>
 				<Column>
 					<Headings>
-						<Heading style={{ width: '25%' }}>Name</Heading>
+						<Heading style={{ width: '30%' }}>Name</Heading>
 						<Heading style={{ width: '20%' }}>Amount</Heading>
 						<Heading style={{ width: '15%' }}>Fat</Heading>
 						<Heading style={{ width: '15%' }}>Carb</Heading>
@@ -83,7 +83,7 @@ const Food = () => {
 					{foodList.map((food, index) => {
 						return (
 							<Row key={index}>
-								<Cell style={{ width: '25%' }}>{food.name}</Cell>
+								<Cell style={{ width: '30%' }}>{food.name}</Cell>
 								<Cell style={{ width: '20%' }}>
 									{food.amount} {food.unit}
 								</Cell>
@@ -146,11 +146,9 @@ const Food = () => {
 								setProtein(event.target.value);
 							}}
 						/>
-						<Input type="submit" value="Add Food" onClick={addFood}></Input>
+						<Input type="submit" value="Add food" onClick={addFood}></Input>
 					</Form>
-				) : (
-					<div></div>
-				)}
+				) : null}
 			</Page>
 		</>
 	);
