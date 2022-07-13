@@ -53,7 +53,8 @@ export const Column = styled.div`
 	display: flex;
 	flex-direction: column;
 	width: 100%;
-	padding: 10px;
+	padding: 10px 10px;
+	padding-bottom: 5px;
 	background: var(--light);
 `;
 
@@ -67,28 +68,77 @@ export const Heading = styled.div`
 	display: flex;
 	justify-content: flex-start;
 	text-align: left;
-	width: 20%;
-	padding: 0 10px;
+	font-size: var(--p);
 `;
 
 export const Row = styled.div`
 	display: flex;
+	flex-direction: column;
 	width: 100%;
+`;
+
+export const Top = styled.div`
+	display: flex;
+	width: 100%;
+	padding: 5px 0;
+	border-bottom: 1px solid var(--medium);
+	&:last-of-type {
+		border-bottom: none;
+	}
+`;
+
+export const Bottom = styled.div`
+	display: flex;
+	justify-content: flex-end;
+	width: 100%;
+	padding: 5px 0;
+	border-bottom: 1px solid var(--medium);
+	&:last-of-type {
+		border-bottom: none;
+	}
 `;
 
 export const Cell = styled.div`
 	display: flex;
 	justify-content: flex-start;
 	text-align: left;
-	width: 20%;
-	padding: 2px 15px;
-	padding-left: 20px;
+	padding-left: 5px;
+	font-size: var(--xs);
 `;
 
-export const Button = styled.div`
+export const BtnSm = styled.div`
 	display: flex;
 	justify-content: center;
+	min-width: 20px;
+	margin-left: 10px;
+	font-size: var(--xs);
+	&:hover {
+		cursor: pointer;
+	}
+`;
+
+export const Btn = styled.div`
+	display: flex;
+	justify-content: center;
+	text-align: center;
 	width: 100%;
 	padding: 10px;
 	background: var(--light);
+	font-size: var(--p);
+	&:hover {
+		cursor: pointer;
+	}
+`;
+
+export const Form = styled.div`
+	display: flex;
+	padding: 10px 0 10px 10px;
+	background: var(--light);
+`;
+
+export const Input = styled.input`
+	width: 50%;
+	padding: 5px 5px;
+	margin-left: 10px;
+	font-size: var(--xs);
 `;
