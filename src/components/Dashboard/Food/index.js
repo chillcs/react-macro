@@ -12,6 +12,7 @@ import {
 	Btn,
 	Form,
 	Input,
+	Submit,
 } from './Elements';
 
 const Food = () => {
@@ -146,7 +147,7 @@ const Food = () => {
 								setProtein(event.target.value);
 							}}
 						/>
-						<Input type="submit" value="Add food" onClick={addFood}></Input>
+						<Submit type="submit" value="Add food" onClick={addFood}></Submit>
 					</Form>
 				) : null}
 			</Page>

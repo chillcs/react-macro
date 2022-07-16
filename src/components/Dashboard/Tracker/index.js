@@ -12,18 +12,28 @@ import {
 	Title,
 	Btn,
 	Column,
+	Log,
+	Cell,
 	Headings,
 	Heading,
 	Row,
 	Top,
 	Bottom,
-	Cell,
 	BtnSm,
 	Form,
 	Input,
+	Submit,
 } from './Elements';
 
 const Tracker = () => {
+	const [quantity, setQuantity] = useState(0);
+	const [unit, setUnit] = useState('');
+	const [name, setName] = useState('');
+	const [fat, setFat] = useState(0);
+	const [carb, setCarb] = useState(0);
+	const [protein, setProtein] = useState(0);
+	const [logList, setLogList] = useState([]);
+
 	const [foodList, setFoodList] = useState([]);
 	const getFood = () => {
 		Axios.get('http://localhost:3001/food').then((response) => {
@@ -38,18 +48,10 @@ const Tracker = () => {
 	};
 
 	const [activeFood, setActiveFood] = useState(-1);
-	function openForm(event) {
-		const target = event.currentTarget.id;
-		setActiveFood((activeFood) =>
-			activeFood === target ? activeFood : target
-		);
-	}
+
 	function closeForm() {
 		setActiveFood((activeFood) => (activeFood = -1));
 	}
-
-	const setQuantity = () => 0;
-	const logFood = () => 0;
 
 	return (
 		<>
@@ -78,6 +80,30 @@ const Tracker = () => {
 						</GraphItem>
 					</Graph>
 				</Section>
+				<Section>
+					<Column>
+						<Headings>
+							<Heading style={{ width: '15%' }}>Qty</Heading>
+							<Heading style={{ width: '15%' }}>Unit</Heading>
+							<Heading style={{ width: '25%' }}>Name</Heading>
+							<Heading style={{ width: '15%' }}>Fat</Heading>
+							<Heading style={{ width: '15%' }}>Carb</Heading>
+							<Heading style={{ width: '15%' }}>Protein</Heading>
+						</Headings>
+						{logList.map((log, index) => {
+							return (
+								<Log key={index}>
+									<Cell style={{ width: '15%' }}>{log.quantity}</Cell>
+									<Cell style={{ width: '15%' }}>{log.unit}</Cell>
+									<Cell style={{ width: '25%' }}>{log.name}</Cell>
+									<Cell style={{ width: '15%' }}>{log.fat} g</Cell>
+									<Cell style={{ width: '15%' }}>{log.carb} g</Cell>
+									<Cell style={{ width: '15%' }}>{log.protein} g</Cell>
+								</Log>
+							);
+						})}
+					</Column>
+				</Section>
 				<Btn onClick={toggleList}>Add food +</Btn>
 				{listIsOpen ? (
 					<Section>
@@ -101,7 +127,20 @@ const Tracker = () => {
 											<Cell style={{ width: '15%' }}>{food.carb} g</Cell>
 											<Cell style={{ width: '15%' }}>{food.protein} g</Cell>
 											{activeFood < 0 ? (
-												<BtnSm id={index} onClick={openForm}>
+												<BtnSm
+													id={index}
+													onClick={(event) => {
+														const target = event.currentTarget.id;
+														setActiveFood((activeFood) =>
+															activeFood === target ? activeFood : target
+														);
+														setUnit(food.unit);
+														setName(food.name);
+														setFat(food.fat);
+														setCarb(food.carb);
+														setProtein(food.protein);
+													}}
+												>
 													Add
 												</BtnSm>
 											) : (
@@ -114,7 +153,20 @@ const Tracker = () => {
 											{activeFood < 0
 												? null
 												: parseInt(activeFood) !== index && (
-														<BtnSm id={index} onClick={openForm}>
+														<BtnSm
+															id={index}
+															onClick={(event) => {
+																const target = event.currentTarget.id;
+																setActiveFood((activeFood) =>
+																	activeFood === target ? activeFood : target
+																);
+																setUnit(food.unit);
+																setName(food.name);
+																setFat(food.fat);
+																setCarb(food.carb);
+																setProtein(food.protein);
+															}}
+														>
 															Add
 														</BtnSm>
 												  )}
@@ -129,11 +181,32 @@ const Tracker = () => {
 															setQuantity(event.target.value);
 														}}
 													/>
-													<Input
+													<Submit
 														type="submit"
 														value="Log food"
-														onClick={logFood}
-													></Input>
+														onClick={() => {
+															Axios.post('http://localhost:3001/log', {
+																quantity: quantity,
+																unit: unit,
+																name: name,
+																fat: fat,
+																carb: carb,
+																protein: protein,
+															}).then(() => {
+																setLogList([
+																	...logList,
+																	{
+																		quantity: quantity,
+																		unit: unit,
+																		name: name,
+																		fat: fat,
+																		carb: carb,
+																		protein: protein,
+																	},
+																]);
+															});
+														}}
+													></Submit>
 												</Form>
 											)}
 										</Bottom>

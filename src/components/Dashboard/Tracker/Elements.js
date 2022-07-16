@@ -53,6 +53,7 @@ export const Column = styled.div`
 	display: flex;
 	flex-direction: column;
 	width: 100%;
+	max-height: 500px;
 	padding: 10px 10px;
 	padding-bottom: 5px;
 	background: var(--light);
@@ -69,6 +70,19 @@ export const Heading = styled.div`
 	justify-content: flex-start;
 	text-align: left;
 	font-size: var(--p);
+`;
+
+export const Log = styled.div`
+	display: flex;
+	width: 100%;
+`;
+
+export const Cell = styled.div`
+	display: flex;
+	justify-content: flex-start;
+	text-align: left;
+	padding-left: 5px;
+	font-size: var(--xs);
 `;
 
 export const Row = styled.div`
@@ -96,14 +110,6 @@ export const Bottom = styled.div`
 	&:last-of-type {
 		border-bottom: none;
 	}
-`;
-
-export const Cell = styled.div`
-	display: flex;
-	justify-content: flex-start;
-	text-align: left;
-	padding-left: 5px;
-	font-size: var(--xs);
 `;
 
 export const BtnSm = styled.div`
@@ -141,4 +147,14 @@ export const Input = styled.input`
 	padding: 5px 5px;
 	margin-left: 10px;
 	font-size: var(--xs);
+`;
+
+export const Submit = styled.input`
+	width: 50%;
+	padding: 5px 5px;
+	margin-left: 10px;
+	font-size: var(--xs);
+	&:hover {
+		cursor: pointer;
+	}
 `;

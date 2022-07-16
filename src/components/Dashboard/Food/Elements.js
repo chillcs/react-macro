@@ -76,3 +76,13 @@ export const Input = styled.input`
 	margin: 5px 0;
 	font-size: var(--p);
 `;
+
+export const Submit = styled.input`
+	width: 100%;
+	padding: 5px 5px;
+	margin: 5px 0;
+	font-size: var(--p);
+	&:hover {
+		cursor: pointer;
+	}
+`;
