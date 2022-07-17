@@ -17,7 +17,6 @@ import {
 
 const Food = () => {
 	const [name, setName] = useState('No name');
-	const [amount, setAmount] = useState(0);
 	const [unit, setUnit] = useState('ea');
 	const [fat, setFat] = useState(0);
 	const [carb, setCarb] = useState(0);
@@ -28,7 +27,6 @@ const Food = () => {
 	const addFood = () => {
 		Axios.post('http://localhost:3001/create', {
 			name: name,
-			amount: amount,
 			unit: unit,
 			fat: fat,
 			carb: carb,
@@ -38,7 +36,6 @@ const Food = () => {
 				...foodList,
 				{
 					name: name,
-					amount: amount,
 					unit: unit,
 					fat: fat,
 					carb: carb,
@@ -76,7 +73,7 @@ const Food = () => {
 				<Column>
 					<Headings>
 						<Heading style={{ width: '30%' }}>Name</Heading>
-						<Heading style={{ width: '20%' }}>Amount</Heading>
+						<Heading style={{ width: '20%' }}>Unit</Heading>
 						<Heading style={{ width: '15%' }}>Fat</Heading>
 						<Heading style={{ width: '15%' }}>Carb</Heading>
 						<Heading style={{ width: '15%' }}>Protein</Heading>
@@ -85,9 +82,7 @@ const Food = () => {
 						return (
 							<Row key={index}>
 								<Cell style={{ width: '30%' }}>{food.name}</Cell>
-								<Cell style={{ width: '20%' }}>
-									{food.amount} {food.unit}
-								</Cell>
+								<Cell style={{ width: '20%' }}>{food.unit}</Cell>
 								<Cell style={{ width: '15%' }}>{food.fat} g</Cell>
 								<Cell style={{ width: '15%' }}>{food.carb} g</Cell>
 								<Cell style={{ width: '15%' }}>{food.protein} g</Cell>
@@ -110,13 +105,6 @@ const Food = () => {
 							placeholder="Name"
 							onChange={(event) => {
 								setName(event.target.value);
-							}}
-						/>
-						<Input
-							type="number"
-							placeholder="Amount"
-							onChange={(event) => {
-								setAmount(event.target.value);
 							}}
 						/>
 						<Input

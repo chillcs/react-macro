@@ -17,6 +17,7 @@ import {
 	Remove,
 	Headings,
 	Heading,
+	Gap,
 	Row,
 	Top,
 	Bottom,
@@ -101,19 +102,19 @@ const Tracker = () => {
 				<Section>
 					<Column>
 						<Headings>
-							<Heading style={{ width: '15%' }}>Qty</Heading>
-							<Heading style={{ width: '15%' }}>Unit</Heading>
-							<Heading style={{ width: '25%' }}>Name</Heading>
+							<Heading style={{ width: '20%' }}>Amount</Heading>
+							<Heading style={{ width: '35%' }}>Food</Heading>
 							<Heading style={{ width: '15%' }}>Fat</Heading>
 							<Heading style={{ width: '15%' }}>Carb</Heading>
 							<Heading style={{ width: '15%' }}>Protein</Heading>
+							<Gap style={{ width: '10px' }}></Gap>
 						</Headings>
 						{logList.map((log, index) => {
 							return (
 								<Log key={index}>
-									<Cell style={{ width: '15%' }}>{log.quantity}</Cell>
+									<Cell style={{ width: '5%' }}>{log.quantity}</Cell>
 									<Cell style={{ width: '15%' }}>{log.unit}</Cell>
-									<Cell style={{ width: '25%' }}>{log.name}</Cell>
+									<Cell style={{ width: '35%' }}>{log.name}</Cell>
 									<Cell style={{ width: '15%' }}>{log.fat} g</Cell>
 									<Cell style={{ width: '15%' }}>{log.carb} g</Cell>
 									<Cell style={{ width: '15%' }}>{log.protein} g</Cell>
@@ -133,21 +134,12 @@ const Tracker = () => {
 				{listIsOpen ? (
 					<Section>
 						<Column>
-							<Headings>
-								<Heading style={{ width: '30%' }}>Name</Heading>
-								<Heading style={{ width: '20%' }}>Amount</Heading>
-								<Heading style={{ width: '15%' }}>Fat</Heading>
-								<Heading style={{ width: '15%' }}>Carb</Heading>
-								<Heading style={{ width: '15%' }}>Protein</Heading>
-							</Headings>
 							{foodList.map((food, index) => {
 								return (
 									<Row key={index}>
 										<Top>
 											<Cell style={{ width: '30%' }}>{food.name}</Cell>
-											<Cell style={{ width: '20%' }}>
-												{food.amount} {food.unit}
-											</Cell>
+											<Cell style={{ width: '20%' }}>{food.unit}</Cell>
 											<Cell style={{ width: '15%' }}>{food.fat} g</Cell>
 											<Cell style={{ width: '15%' }}>{food.carb} g</Cell>
 											<Cell style={{ width: '15%' }}>{food.protein} g</Cell>

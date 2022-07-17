@@ -71,6 +71,14 @@ export const Heading = styled.div`
 	font-size: var(--p);
 `;
 
+export const Gap = styled.div`
+	display: flex;
+	justify-content: flex-start;
+	margin-left: 10px;
+	text-align: left;
+	font-size: var(--p);
+`;
+
 export const Log = styled.div`
 	display: flex;
 	width: 100%;
