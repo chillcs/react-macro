@@ -14,6 +14,7 @@ import {
 	Column,
 	Log,
 	Cell,
+	Remove,
 	Headings,
 	Heading,
 	Row,
@@ -52,6 +53,23 @@ const Tracker = () => {
 	function closeForm() {
 		setActiveFood((activeFood) => (activeFood = -1));
 	}
+
+	const getFoodLog = () => {
+		Axios.get('http://localhost:3001/foodlog').then((response) => {
+			setLogList(response.data);
+		});
+	};
+	getFoodLog();
+
+	const removeFood = (id) => {
+		Axios.delete(`http://localhost:3001/remove/${id}`).then((response) => {
+			setLogList(
+				logList.filter((log) => {
+					return log.id !== id;
+				})
+			);
+		});
+	};
 
 	return (
 		<>
@@ -99,6 +117,13 @@ const Tracker = () => {
 									<Cell style={{ width: '15%' }}>{log.fat} g</Cell>
 									<Cell style={{ width: '15%' }}>{log.carb} g</Cell>
 									<Cell style={{ width: '15%' }}>{log.protein} g</Cell>
+									<Remove
+										onClick={() => {
+											removeFood(log.id);
+										}}
+									>
+										X
+									</Remove>
 								</Log>
 							);
 						})}
@@ -205,6 +230,7 @@ const Tracker = () => {
 																	},
 																]);
 															});
+															closeForm();
 														}}
 													></Submit>
 												</Form>

@@ -53,7 +53,6 @@ export const Column = styled.div`
 	display: flex;
 	flex-direction: column;
 	width: 100%;
-	max-height: 500px;
 	padding: 10px 10px;
 	padding-bottom: 5px;
 	background: var(--light);
@@ -83,6 +82,16 @@ export const Cell = styled.div`
 	text-align: left;
 	padding-left: 5px;
 	font-size: var(--xs);
+`;
+
+export const Remove = styled.div`
+	display: flex;
+	justify-content: center;
+	margin-left: 10px;
+	font-size: var(--xs);
+	&:hover {
+		cursor: pointer;
+	}
 `;
 
 export const Row = styled.div`
