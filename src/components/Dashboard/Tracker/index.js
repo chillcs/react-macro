@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Axios from 'axios';
 import { Page } from '../../Reusable';
 import {
@@ -34,43 +34,28 @@ const Tracker = () => {
 	const [fat, setFat] = useState(0);
 	const [carb, setCarb] = useState(0);
 	const [protein, setProtein] = useState(0);
-	const [logList, setLogList] = useState([]);
-
-	const [foodList, setFoodList] = useState([]);
-	const getFood = () => {
-		Axios.get('http://localhost:3001/food').then((response) => {
-			setFoodList(response.data);
-		});
-	};
-	getFood();
-
-	const [listIsOpen, setListIsOpen] = useState(false);
-	const toggleList = () => {
-		setListIsOpen(!listIsOpen);
-	};
-
+	const [openList, setOpenList] = useState(false);
 	const [activeFood, setActiveFood] = useState(-1);
 
-	function closeForm() {
-		setActiveFood((activeFood) => (activeFood = -1));
-	}
+	const [foodList, setFoodList] = useState([]);
+	useEffect(() => {
+		const getFood = () => {
+			Axios.get('http://localhost:3001/food').then((response) => {
+				setFoodList(response.data);
+			});
+		};
+		getFood();
+	}, []);
 
-	const getFoodLog = () => {
-		Axios.get('http://localhost:3001/foodlog').then((response) => {
-			setLogList(response.data);
-		});
-	};
-	getFoodLog();
-
-	const removeFood = (id) => {
-		Axios.delete(`http://localhost:3001/remove/${id}`).then((response) => {
-			setLogList(
-				logList.filter((log) => {
-					return log.id !== id;
-				})
-			);
-		});
-	};
+	const [logList, setLogList] = useState([]);
+	useEffect(() => {
+		const getFoodLog = () => {
+			Axios.get('http://localhost:3001/foodlog').then((response) => {
+				setLogList(response.data);
+			});
+		};
+		getFoodLog();
+	}, []);
 
 	return (
 		<>
@@ -120,6 +105,17 @@ const Tracker = () => {
 									<Cell style={{ width: '15%' }}>{log.protein} g</Cell>
 									<Remove
 										onClick={() => {
+											const removeFood = (id) => {
+												Axios.delete(`http://localhost:3001/remove/${id}`).then(
+													(response) => {
+														setLogList(
+															logList.filter((log) => {
+																return log.id !== id;
+															})
+														);
+													}
+												);
+											};
 											removeFood(log.id);
 										}}
 									>
@@ -130,8 +126,14 @@ const Tracker = () => {
 						})}
 					</Column>
 				</Section>
-				<Btn onClick={toggleList}>Add food +</Btn>
-				{listIsOpen ? (
+				<Btn
+					onClick={() => {
+						setOpenList(!openList);
+					}}
+				>
+					Add food +
+				</Btn>
+				{openList ? (
 					<Section>
 						<Column>
 							{foodList.map((food, index) => {
@@ -162,7 +164,12 @@ const Tracker = () => {
 												</BtnSm>
 											) : (
 												parseInt(activeFood) === index && (
-													<BtnSm id={index} onClick={closeForm}>
+													<BtnSm
+														id={index}
+														onClick={() =>
+															setActiveFood((activeFood) => (activeFood = -1))
+														}
+													>
 														Hide
 													</BtnSm>
 												)
@@ -222,7 +229,8 @@ const Tracker = () => {
 																	},
 																]);
 															});
-															closeForm();
+															setActiveFood((activeFood) => (activeFood = -1));
+															window.location.reload(false);
 														}}
 													></Submit>
 												</Form>
