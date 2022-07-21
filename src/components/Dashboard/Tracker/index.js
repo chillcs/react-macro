@@ -57,6 +57,36 @@ const Tracker = () => {
 		getFoodLog();
 	}, []);
 
+	const [fats, setFats] = useState([]);
+	useEffect(() => {
+		const getFats = () => {
+			Axios.get('http://localhost:3001/fatsum').then((response) => {
+				setFats(response.data);
+			});
+		};
+		getFats();
+	}, []);
+
+	const [carbs, setCarbs] = useState([]);
+	useEffect(() => {
+		const getCarbs = () => {
+			Axios.get('http://localhost:3001/carbsum').then((response) => {
+				setCarbs(response.data);
+			});
+		};
+		getCarbs();
+	}, []);
+
+	const [proteins, setProteins] = useState([]);
+	useEffect(() => {
+		const getProteins = () => {
+			Axios.get('http://localhost:3001/proteinsum').then((response) => {
+				setProteins(response.data);
+			});
+		};
+		getProteins();
+	}, []);
+
 	return (
 		<>
 			<Page>
@@ -70,18 +100,35 @@ const Tracker = () => {
 				</Section>
 				<Section>
 					<Graph>
-						<GraphItem>
-							<Bar style={{ height: `${30 * 2}px` }}>{30}g</Bar>
-							<Title>Fat</Title>
-						</GraphItem>
-						<GraphItem>
-							<Bar style={{ height: `${40 * 2}px` }}>{40}g</Bar>
-							<Title>Carb</Title>
-						</GraphItem>
-						<GraphItem>
-							<Bar style={{ height: `${10 * 2}px` }}>{10}g</Bar>
-							<Title>Protein</Title>
-						</GraphItem>
+						{fats.map((fat, index) => {
+							const FAT_SUM = Object.values(fat)[0];
+							return (
+								<GraphItem key={index}>
+									<Bar style={{ height: `${FAT_SUM}px` }}>{FAT_SUM}g</Bar>
+									<Title>Fat</Title>
+								</GraphItem>
+							);
+						})}
+						{carbs.map((carb, index) => {
+							const CARB_SUM = Object.values(carb)[0];
+							return (
+								<GraphItem key={index}>
+									<Bar style={{ height: `${CARB_SUM}px` }}>{CARB_SUM}g</Bar>
+									<Title>Carb</Title>
+								</GraphItem>
+							);
+						})}
+						{proteins.map((protein, index) => {
+							const PROTEIN_SUM = Object.values(protein)[0];
+							return (
+								<GraphItem key={index}>
+									<Bar style={{ height: `${PROTEIN_SUM}px` }}>
+										{PROTEIN_SUM}g
+									</Bar>
+									<Title>Protein</Title>
+								</GraphItem>
+							);
+						})}
 					</Graph>
 				</Section>
 				<Section>
