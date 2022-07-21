@@ -164,6 +164,7 @@ const Tracker = () => {
 												);
 											};
 											removeFood(log.id);
+											window.location.reload(false);
 										}}
 									>
 										X
