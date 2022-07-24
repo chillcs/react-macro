@@ -30,25 +30,35 @@ const FoodLog = () => {
 	const [openList, setOpenList] = useState(false);
 	const [activeFood, setActiveFood] = useState(-1);
 
-	const [foodList, setFoodList] = useState([]);
+	const [foodData, setFoodData] = useState([]);
 	useEffect(() => {
-		const getFood = () => {
-			Axios.get('http://localhost:3001/food').then((response) => {
-				setFoodList(response.data);
+		fetch('http://localhost:3001/food')
+			.then((res) => res.json())
+			.then((data) => {
+				setFoodData(data);
 			});
-		};
-		getFood();
 	}, []);
 
-	const [logList, setLogList] = useState([]);
+	const [logData, setLogData] = useState([]);
 	useEffect(() => {
-		const getFoodLog = () => {
-			Axios.get('http://localhost:3001/foodlog').then((response) => {
-				setLogList(response.data);
+		fetch('http://localhost:3001/foodlog')
+			.then((res) => res.json())
+			.then((data) => {
+				setLogData(data);
 			});
-		};
-		getFoodLog();
 	}, []);
+
+	const removeFood = (id) => {
+		fetch(`http://localhost:3001/remove/${id}`, {
+			method: 'DELETE',
+		}).then(() => {
+			setLogData(
+				logData.filter((log) => {
+					return log.id !== id;
+				})
+			);
+		});
+	};
 
 	return (
 		<>
@@ -62,7 +72,7 @@ const FoodLog = () => {
 						<Heading style={{ width: '15%' }}>Protein</Heading>
 						<Gap style={{ width: '10px' }}></Gap>
 					</Headings>
-					{logList.map((log, index) => {
+					{logData.map((log, index) => {
 						return (
 							<Log key={index}>
 								<Cell style={{ width: '5%' }}>{log.quantity}</Cell>
@@ -73,19 +83,7 @@ const FoodLog = () => {
 								<Cell style={{ width: '15%' }}>{log.protein} g</Cell>
 								<Remove
 									onClick={() => {
-										const removeFood = (id) => {
-											Axios.delete(`http://localhost:3001/remove/${id}`).then(
-												(response) => {
-													setLogList(
-														logList.filter((log) => {
-															return log.id !== id;
-														})
-													);
-												}
-											);
-										};
 										removeFood(log.id);
-										window.location.reload(false);
 									}}
 								>
 									X
@@ -105,7 +103,7 @@ const FoodLog = () => {
 			{openList ? (
 				<Section>
 					<Column>
-						{foodList.map((food, index) => {
+						{foodData.map((food, index) => {
 							return (
 								<Row key={index}>
 									<Top>
@@ -186,8 +184,8 @@ const FoodLog = () => {
 															carb: carb,
 															protein: protein,
 														}).then(() => {
-															setLogList([
-																...logList,
+															setLogData([
+																...logData,
 																{
 																	quantity: quantity,
 																	unit: unit,
@@ -199,7 +197,6 @@ const FoodLog = () => {
 															]);
 														});
 														setActiveFood((activeFood) => (activeFood = -1));
-														window.location.reload(false);
 													}}
 												></Submit>
 											</Form>
