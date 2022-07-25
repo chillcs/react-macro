@@ -1,6 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
-import Axios from 'axios';
+import { useState, useEffect } from 'react';
 import { Page } from '../../Reusable';
 import {
 	Column,
@@ -21,19 +20,34 @@ const Food = () => {
 	const [fat, setFat] = useState(0);
 	const [carb, setCarb] = useState(0);
 	const [protein, setProtein] = useState(0);
-	const [foodList, setFoodList] = useState([]);
 	const [isOpen, setIsOpen] = useState(false);
 
+	const [foodData, setFoodData] = useState([]);
+	useEffect(() => {
+		fetch('http://localhost:3001/fooddata')
+			.then((res) => res.json())
+			.then((data) => {
+				setFoodData(data);
+			});
+	}, []);
+
 	const addFood = () => {
-		Axios.post('http://localhost:3001/create', {
-			name: name,
-			unit: unit,
-			fat: fat,
-			carb: carb,
-			protein: protein,
+		fetch('http://localhost:3001/createfood', {
+			method: 'POST',
+			headers: {
+				Accept: 'application/json',
+				'Content-Type': 'application/json;charset=UTF-8',
+			},
+			body: JSON.stringify({
+				name: name,
+				unit: unit,
+				fat: fat,
+				carb: carb,
+				protein: protein,
+			}),
 		}).then(() => {
-			setFoodList([
-				...foodList,
+			setFoodData([
+				...foodData,
 				{
 					name: name,
 					unit: unit,
@@ -46,17 +60,12 @@ const Food = () => {
 		toggle();
 	};
 
-	const getFood = () => {
-		Axios.get('http://localhost:3001/food').then((response) => {
-			setFoodList(response.data);
-		});
-	};
-	getFood();
-
 	const deleteFood = (id) => {
-		Axios.delete(`http://localhost:3001/delete/${id}`).then((response) => {
-			setFoodList(
-				foodList.filter((food) => {
+		fetch(`http://localhost:3001/deletefood/${id}`, {
+			method: 'DELETE',
+		}).then(() => {
+			setFoodData(
+				foodData.filter((food) => {
 					return food.id !== id;
 				})
 			);
@@ -78,7 +87,7 @@ const Food = () => {
 						<Heading style={{ width: '15%' }}>Carb</Heading>
 						<Heading style={{ width: '15%' }}>Protein</Heading>
 					</Headings>
-					{foodList.map((food, index) => {
+					{foodData.map((food, index) => {
 						return (
 							<Row key={index}>
 								<Cell style={{ width: '30%' }}>{food.name}</Cell>

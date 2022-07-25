@@ -5,7 +5,7 @@ import { Section, Items, Item, Bar, Title } from './Elements';
 const Graph = () => {
 	const [logData, setLogData] = useState([]);
 	useEffect(() => {
-		fetch('http://localhost:3001/foodlog')
+		fetch('http://localhost:3001/logdata')
 			.then((res) => res.json())
 			.then((data) => {
 				setLogData(data);

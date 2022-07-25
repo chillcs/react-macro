@@ -1,6 +1,5 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import Axios from 'axios';
 import {
 	Section,
 	Btn,
@@ -32,16 +31,47 @@ const FoodLog = () => {
 
 	const [foodData, setFoodData] = useState([]);
 	useEffect(() => {
-		fetch('http://localhost:3001/food')
+		fetch('http://localhost:3001/fooddata')
 			.then((res) => res.json())
 			.then((data) => {
 				setFoodData(data);
 			});
 	}, []);
 
+	const logFood = () => {
+		fetch('http://localhost:3001/createlog', {
+			method: 'POST',
+			headers: {
+				Accept: 'application/json',
+				'Content-Type': 'application/json;charset=UTF-8',
+			},
+			body: JSON.stringify({
+				quantity: quantity,
+				unit: unit,
+				name: name,
+				fat: fat,
+				carb: carb,
+				protein: protein,
+			}),
+		}).then(() => {
+			setLogData([
+				...logData,
+				{
+					quantity: quantity,
+					unit: unit,
+					name: name,
+					fat: fat,
+					carb: carb,
+					protein: protein,
+				},
+			]);
+		});
+		setActiveFood((activeFood) => (activeFood = -1));
+	};
+
 	const [logData, setLogData] = useState([]);
 	useEffect(() => {
-		fetch('http://localhost:3001/foodlog')
+		fetch('http://localhost:3001/logdata')
 			.then((res) => res.json())
 			.then((data) => {
 				setLogData(data);
@@ -49,7 +79,7 @@ const FoodLog = () => {
 	}, []);
 
 	const removeFood = (id) => {
-		fetch(`http://localhost:3001/remove/${id}`, {
+		fetch(`http://localhost:3001/deletelog/${id}`, {
 			method: 'DELETE',
 		}).then(() => {
 			setLogData(
@@ -175,29 +205,7 @@ const FoodLog = () => {
 												<Submit
 													type="submit"
 													value="Log food"
-													onClick={() => {
-														Axios.post('http://localhost:3001/log', {
-															quantity: quantity,
-															unit: unit,
-															name: name,
-															fat: fat,
-															carb: carb,
-															protein: protein,
-														}).then(() => {
-															setLogData([
-																...logData,
-																{
-																	quantity: quantity,
-																	unit: unit,
-																	name: name,
-																	fat: fat,
-																	carb: carb,
-																	protein: protein,
-																},
-															]);
-														});
-														setActiveFood((activeFood) => (activeFood = -1));
-													}}
+													onClick={logFood}
 												></Submit>
 											</Form>
 										)}
