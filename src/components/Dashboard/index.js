@@ -17,7 +17,7 @@ import Food from '../Dashboard/Food/index';
 import Settings from '../Dashboard/Settings/index';
 
 const Home = () => {
-	const [active, setActive] = useState(2);
+	const [active, setActive] = useState(1);
 	function openTab(event) {
 		const target = event.currentTarget.id;
 		setActive((active) => (active === target ? active : target));

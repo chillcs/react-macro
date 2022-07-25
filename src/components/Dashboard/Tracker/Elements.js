@@ -79,7 +79,7 @@ export const Gap = styled.div`
 	font-size: var(--p);
 `;
 
-export const Log = styled.div`
+export const LogItem = styled.div`
 	display: flex;
 	width: 100%;
 `;

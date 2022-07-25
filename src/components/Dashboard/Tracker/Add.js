@@ -4,12 +4,7 @@ import {
 	Section,
 	Btn,
 	Column,
-	Log,
 	Cell,
-	Remove,
-	Headings,
-	Heading,
-	Gap,
 	Row,
 	Top,
 	Bottom,
@@ -19,7 +14,7 @@ import {
 	Submit,
 } from './Elements';
 
-const FoodLog = () => {
+const Add = (props) => {
 	const [quantity, setQuantity] = useState(0);
 	const [unit, setUnit] = useState('');
 	const [name, setName] = useState('');
@@ -28,8 +23,9 @@ const FoodLog = () => {
 	const [protein, setProtein] = useState(0);
 	const [openList, setOpenList] = useState(false);
 	const [activeFood, setActiveFood] = useState(-1);
-
 	const [foodData, setFoodData] = useState([]);
+	const [logData, setLogData] = useState([]);
+
 	useEffect(() => {
 		fetch('http://localhost:3001/fooddata')
 			.then((res) => res.json())
@@ -38,7 +34,7 @@ const FoodLog = () => {
 			});
 	}, []);
 
-	const logFood = () => {
+	const createLog = () => {
 		fetch('http://localhost:3001/createlog', {
 			method: 'POST',
 			headers: {
@@ -67,62 +63,11 @@ const FoodLog = () => {
 			]);
 		});
 		setActiveFood((activeFood) => (activeFood = -1));
-	};
-
-	const [logData, setLogData] = useState([]);
-	useEffect(() => {
-		fetch('http://localhost:3001/logdata')
-			.then((res) => res.json())
-			.then((data) => {
-				setLogData(data);
-			});
-	}, []);
-
-	const removeFood = (id) => {
-		fetch(`http://localhost:3001/deletelog/${id}`, {
-			method: 'DELETE',
-		}).then(() => {
-			setLogData(
-				logData.filter((log) => {
-					return log.id !== id;
-				})
-			);
-		});
+		props.updateData();
 	};
 
 	return (
 		<>
-			<Section>
-				<Column>
-					<Headings>
-						<Heading style={{ width: '20%' }}>Amount</Heading>
-						<Heading style={{ width: '35%' }}>Food</Heading>
-						<Heading style={{ width: '15%' }}>Fat</Heading>
-						<Heading style={{ width: '15%' }}>Carb</Heading>
-						<Heading style={{ width: '15%' }}>Protein</Heading>
-						<Gap style={{ width: '10px' }}></Gap>
-					</Headings>
-					{logData.map((log, index) => {
-						return (
-							<Log key={index}>
-								<Cell style={{ width: '5%' }}>{log.quantity}</Cell>
-								<Cell style={{ width: '15%' }}>{log.unit}</Cell>
-								<Cell style={{ width: '35%' }}>{log.name}</Cell>
-								<Cell style={{ width: '15%' }}>{log.fat} g</Cell>
-								<Cell style={{ width: '15%' }}>{log.carb} g</Cell>
-								<Cell style={{ width: '15%' }}>{log.protein} g</Cell>
-								<Remove
-									onClick={() => {
-										removeFood(log.id);
-									}}
-								>
-									X
-								</Remove>
-							</Log>
-						);
-					})}
-				</Column>
-			</Section>
 			<Btn
 				onClick={() => {
 					setOpenList(!openList);
@@ -205,7 +150,7 @@ const FoodLog = () => {
 												<Submit
 													type="submit"
 													value="Log food"
-													onClick={logFood}
+													onClick={createLog}
 												></Submit>
 											</Form>
 										)}
@@ -219,4 +164,4 @@ const FoodLog = () => {
 		</>
 	);
 };
-export default FoodLog;
+export default Add;
