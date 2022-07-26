@@ -1,12 +1,10 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { Column, Headings, Heading, Row, Cell, Delete } from './Elements';
+import styled from 'styled-components';
 
 const List = (props) => {
-	// State ---
 	const [foodData, setFoodData] = useState([]);
 
-	//Get food data ---
 	useEffect(() => {
 		fetch('http://localhost:3001/fooddata')
 			.then((res) => res.json())
@@ -15,7 +13,6 @@ const List = (props) => {
 			});
 	}, [props.data]);
 
-	// Delete food ---
 	const deleteFood = (id) => {
 		fetch(`http://localhost:3001/deletefood/${id}`, {
 			method: 'DELETE',
@@ -28,7 +25,6 @@ const List = (props) => {
 		});
 	};
 
-	// Render ---
 	return (
 		<>
 			<Column>
@@ -63,3 +59,53 @@ const List = (props) => {
 };
 
 export default List;
+
+export const Column = styled.div`
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	padding: 10px 10px;
+	padding-bottom: 5px;
+	background: var(--light);
+`;
+
+export const Headings = styled.div`
+	display: flex;
+	width: 100%;
+	padding-bottom: 10px;
+`;
+
+export const Heading = styled.div`
+	display: flex;
+	justify-content: flex-start;
+	text-align: left;
+	font-size: var(--p);
+`;
+
+export const Row = styled.div`
+	display: flex;
+	width: 100%;
+	padding: 5px 0;
+	border-bottom: 1px solid var(--medium);
+	&:last-of-type {
+		border-bottom: none;
+	}
+`;
+
+export const Cell = styled.div`
+	display: flex;
+	justify-content: flex-start;
+	text-align: left;
+	padding-left: 5px;
+	font-size: var(--xs);
+`;
+
+export const Delete = styled.div`
+	display: flex;
+	justify-content: center;
+	margin-left: 10px;
+	font-size: var(--xs);
+	&:hover {
+		cursor: pointer;
+	}
+`;

@@ -1,16 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import {
-	App,
-	Header,
-	Navbar,
-	Title,
-	Btn,
-	Body,
-	Footer,
-	TabList,
-	Tab,
-} from '../Dashboard/Elements';
+import styled from 'styled-components';
 import Profile from '../Dashboard/Profile/index';
 import Tracker from '../Dashboard/Tracker/index';
 import Food from '../Dashboard/Food/index';
@@ -40,7 +30,7 @@ const Home = () => {
 					{parseInt(active) === 3 && <Settings />}
 				</Body>
 				<Footer>
-					<TabList>
+					<Tabs>
 						<Tab id={1} onClick={openTab}>
 							Tracker
 						</Tab>
@@ -50,7 +40,7 @@ const Home = () => {
 						<Tab id={3} onClick={openTab}>
 							Settings
 						</Tab>
-					</TabList>
+					</Tabs>
 				</Footer>
 			</App>
 		</>
@@ -58,3 +48,80 @@ const Home = () => {
 };
 
 export default Home;
+
+export const App = styled.div`
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 100vh;
+	padding: 15px;
+	background: var(--medium);
+`;
+
+export const Header = styled.div`
+	position: fixed;
+	top: 0%;
+	left: 0%;
+	width: 100%;
+	background: var(--dark);
+`;
+
+export const Navbar = styled.div`
+	position: relative;
+	height: 80px;
+`;
+
+export const Title = styled.div`
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	font-size: 25px;
+	color: var(--light);
+`;
+
+export const Btn = styled.div`
+	position: absolute;
+	top: 50%;
+	right: 0%;
+	transform: translate(0, -50%);
+	padding: 20px;
+	margin-right: 10px;
+	background: var(--light);
+	&:hover {
+		cursor: pointer;
+	}
+`;
+
+export const Body = styled.div`
+	position: absolute;
+	top: 80px;
+	left: 0%;
+	width: 100%;
+`;
+
+export const Footer = styled.div`
+	position: fixed;
+	bottom: 0%;
+	left: 0%;
+	height: 50px;
+	width: 100%;
+	background: var(--dark);
+`;
+
+export const Tabs = styled.div`
+	display: flex;
+`;
+
+export const Tab = styled.div`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	padding: 15px 10px;
+	color: var(--light);
+	&:hover {
+		cursor: pointer;
+	}
+`;

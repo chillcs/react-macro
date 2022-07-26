@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import { Page } from '../../Reusable';
+import { Page } from '../../Elements';
 import List from '../Food/List';
 import Create from './Create';
 

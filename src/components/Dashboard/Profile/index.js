@@ -1,5 +1,5 @@
 import React from 'react';
-import { Page } from '../../Reusable';
+import { Page } from '../../Elements';
 
 const Profile = () => {
 	return (

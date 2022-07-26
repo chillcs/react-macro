@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import { Btn, Form, Input, Submit } from './Elements';
+import styled from 'styled-components';
 
 const Create = (props) => {
 	const [name, setName] = useState('No name');
@@ -95,3 +95,40 @@ const Create = (props) => {
 };
 
 export default Create;
+
+export const Btn = styled.div`
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	width: 100%;
+	padding: 10px;
+	background: var(--light);
+	font-size: var(--p);
+	&:hover {
+		cursor: pointer;
+	}
+`;
+
+export const Form = styled.div`
+	display: flex;
+	flex-direction: column;
+	padding: 10px;
+	background: var(--light);
+`;
+
+export const Input = styled.input`
+	width: 100%;
+	padding: 5px 5px;
+	margin: 5px 0;
+	font-size: var(--p);
+`;
+
+export const Submit = styled.input`
+	width: 100%;
+	padding: 5px 5px;
+	margin: 5px 0;
+	font-size: var(--p);
+	&:hover {
+		cursor: pointer;
+	}
+`;
