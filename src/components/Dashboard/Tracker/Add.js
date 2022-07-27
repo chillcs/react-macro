@@ -65,6 +65,7 @@ const Add = (props) => {
 			</Btn>
 			{openList ? (
 				<Section>
+					<Title>FOOD LIBRARY</Title>
 					<Column>
 						{foodData.map((food, index) => {
 							return (
@@ -157,9 +158,9 @@ export default Add;
 export const Btn = styled.div`
 	display: flex;
 	justify-content: center;
-	text-align: center;
+	align-items: center;
 	width: 100%;
-	padding: 10px;
+	height: 50px;
 	background: var(--light);
 	font-size: var(--p);
 	&:hover {
@@ -168,10 +169,23 @@ export const Btn = styled.div`
 `;
 
 export const Section = styled.div`
+	position: absolute;
+	top: 0;
+	left: 0;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	width: calc(100% - 20px);
+	height: calc(100% - 50px - 30px);
+	margin: 10px 10px;
+	background-color: var(--light);
+	overflow-y: auto;
+	z-index: 100;
+`;
+export const Title = styled.div`
 	width: 100%;
+	margin: 20px 0 15px 0;
+	text-align: center;
+	font-size: var(--p);
 `;
 
 export const Column = styled.div`

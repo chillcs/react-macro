@@ -7,7 +7,9 @@ font-family: 'Smooch Sans', sans-serif;
 
 :root {
    --light: #f2f2f8;
+   --light2: #e5e5ec;
    --medium: #e2e0ed;
+   --alternate: #c8c4dc;
    --dark: #3F3D56;
    --accent: #860F1C;
    --hover: #bA0A0A;
