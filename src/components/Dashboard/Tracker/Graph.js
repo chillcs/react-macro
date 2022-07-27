@@ -38,31 +38,45 @@ const Graph = (props) => {
 		);
 	}, [logData]);
 
-	const targetCalories = 2000;
+	const targetFats = 100;
+	const targetCarbs = 200;
+	const targetProteins = 150;
+	const targetCalories = targetFats * 9 + targetCarbs * 4 + targetProteins * 4;
+	console.log(targetCalories);
 	const calories = fats * 9 + carbs * 4 + proteins * 4;
 	const width = ((calories / targetCalories) * 100).toString() + '%';
-	console.log(width);
 
 	return (
 		<>
 			<Section>
 				<Items>
 					<Item>
-						<Bar style={{ height: `${fats}px` }}>{fats}g</Bar>
+						<TargetBar style={{ height: `${targetFats}px` }}>
+							<Bar style={{ height: `${fats}px` }}>{fats}g</Bar>
+						</TargetBar>
 						<Title>Fat</Title>
 					</Item>
 					<Item>
-						<Bar style={{ height: `${carbs}px` }}>{carbs}g</Bar>
+						<TargetBar style={{ height: `${targetCarbs}px` }}>
+							<Bar style={{ height: `${carbs}px` }}>{carbs}g</Bar>
+						</TargetBar>
 						<Title>Carb</Title>
 					</Item>
 					<Item>
-						<Bar style={{ height: `${proteins}px` }}>{proteins}g</Bar>
+						<TargetBar style={{ height: `${targetProteins}px` }}>
+							<Bar style={{ height: `${proteins}px` }}>{proteins}g</Bar>
+						</TargetBar>
 						<Title>Protein</Title>
 					</Item>
 				</Items>
-				<TargetCalories>
-					<Calories style={{ width: `${width}` }}>{calories} cals</Calories>
-				</TargetCalories>
+				<Calories>
+					<TargetCalories>
+						<LoggedCalories style={{ width: `${width}` }}></LoggedCalories>
+					</TargetCalories>
+					<Title>
+						{calories} / {targetCalories} cals
+					</Title>
+				</Calories>
 			</Section>
 		</>
 	);
@@ -74,7 +88,7 @@ export const Section = styled.div`
 	flex-direction: column;
 	justify-content: flex-end;
 	width: 100%;
-	height: 40%;
+	height: 50%;
 `;
 
 export const Items = styled.div`
@@ -92,14 +106,23 @@ export const Item = styled.div`
 	width: 100px;
 `;
 
-export const Bar = styled.div`
+export const TargetBar = styled.div`
+	position: relative;
 	display: flex;
-	justify-content: center;
-	align-items: center;
+	align-items: flex-end;
 	width: 50px;
 	min-height: 10px;
 	margin-bottom: 10px;
 	background: var(--light);
+`;
+
+export const Bar = styled.div`
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 50px;
+	background: var(--dark);
 `;
 
 export const Title = styled.div`
@@ -107,14 +130,22 @@ export const Title = styled.div`
 	margin-bottom: 10px;
 `;
 
+export const Calories = styled.div`
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+`;
+
 export const TargetCalories = styled.div`
 	position: relative;
 	width: 100%;
 	height: 25px;
+	margin-bottom: 10px;
 	background: var(--light);
 `;
 
-export const Calories = styled.div`
+export const LoggedCalories = styled.div`
 	position: absolute;
 	display: flex;
 	justify-content: center;
