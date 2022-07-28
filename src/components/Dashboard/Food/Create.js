@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import styled from 'styled-components';
-import { Button } from '../../Elements';
+import { Title, Button } from '../../Elements';
 
 const Create = (props) => {
 	const [name, setName] = useState('No name');
@@ -54,44 +54,47 @@ const Create = (props) => {
 				</Button>
 			</Wrapper>
 			{isOpen ? (
-				<Form>
-					<Input
-						type="text"
-						placeholder="Name"
-						onChange={(event) => {
-							setName(event.target.value);
-						}}
-					/>
-					<Input
-						type="text"
-						placeholder="Unit"
-						onChange={(event) => {
-							setUnit(event.target.value);
-						}}
-					/>
-					<Input
-						type="number"
-						placeholder="Fat (g)"
-						onChange={(event) => {
-							setFat(event.target.value);
-						}}
-					/>
-					<Input
-						type="number"
-						placeholder="Carb (g)"
-						onChange={(event) => {
-							setCarb(event.target.value);
-						}}
-					/>
-					<Input
-						type="number"
-						placeholder="Protein (g)"
-						onChange={(event) => {
-							setProtein(event.target.value);
-						}}
-					/>
-					<Submit type="submit" value="Add food" onClick={createFood}></Submit>
-				</Form>
+				<Container>
+					<Title>ENTER FOOD INFO</Title>
+					<Form>
+						<Input
+							type="text"
+							placeholder="Name"
+							onChange={(event) => {
+								setName(event.target.value);
+							}}
+						/>
+						<Input
+							type="text"
+							placeholder="Unit"
+							onChange={(event) => {
+								setUnit(event.target.value);
+							}}
+						/>
+						<Input
+							type="number"
+							placeholder="Fat (g)"
+							onChange={(event) => {
+								setFat(event.target.value);
+							}}
+						/>
+						<Input
+							type="number"
+							placeholder="Carb (g)"
+							onChange={(event) => {
+								setCarb(event.target.value);
+							}}
+						/>
+						<Input
+							type="number"
+							placeholder="Protein (g)"
+							onChange={(event) => {
+								setProtein(event.target.value);
+							}}
+						/>
+						<Submit type="submit" value="SUBMIT" onClick={createFood}></Submit>
+					</Form>
+				</Container>
 			) : null}
 		</>
 	);
@@ -106,6 +109,20 @@ export const Wrapper = styled.div`
 	height: 100%;
 `;
 
+export const Container = styled.div`
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: flex;
+	flex-direction: column;
+	width: calc(100% - 20px);
+	height: calc(100% - 50px - 30px);
+	margin: 10px;
+	background-color: var(--light);
+	overflow-y: auto;
+	z-index: 30;
+`;
+
 export const Form = styled.div`
 	display: flex;
 	flex-direction: column;
@@ -115,16 +132,22 @@ export const Form = styled.div`
 
 export const Input = styled.input`
 	width: 100%;
-	padding: 5px 5px;
+	padding: 10px;
 	margin: 5px 0;
 	font-size: var(--p);
+	background: var(--light);
+	border: 1px solid var(--dark);
+	border-radius: 0px;
 `;
 
 export const Submit = styled.input`
 	width: 100%;
-	padding: 5px 5px;
+	padding: 10px;
 	margin: 5px 0;
 	font-size: var(--p);
+	background: var(--dark);
+	color: var(--light);
+	border: none;
 	&:hover {
 		cursor: pointer;
 	}
