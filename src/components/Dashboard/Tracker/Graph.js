@@ -171,13 +171,14 @@ export const Title = styled.div`
 `;
 
 export const Amount = styled.div`
-	margin-bottom: 10px;
+	display: flex;
 `;
 
 export const Calories = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: flex-end;
+	margin-top: 10px;
 `;
 
 export const TargetCalories = styled.div`
@@ -185,7 +186,7 @@ export const TargetCalories = styled.div`
 	display: flex;
 	align-items: center;
 	width: 100%;
-	height: 35px;
+	height: 25px;
 	margin-bottom: 10px;
 	background: var(--light);
 `;
@@ -196,6 +197,6 @@ export const Logged = styled.div`
 	justify-content: center;
 	align-items: center;
 	max-width: 100%;
-	height: 35px;
+	height: 25px;
 	background: var(--alternate);
 `;

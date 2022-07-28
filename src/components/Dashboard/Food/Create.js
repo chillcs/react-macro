@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import styled from 'styled-components';
+import { Button } from '../../Elements';
 
 const Create = (props) => {
 	const [name, setName] = useState('No name');
@@ -43,13 +44,15 @@ const Create = (props) => {
 
 	return (
 		<>
-			<Btn
-				onClick={() => {
-					setIsOpen(!isOpen);
-				}}
-			>
-				Create a new food +
-			</Btn>
+			<Wrapper>
+				<Button
+					onClick={() => {
+						setIsOpen(!isOpen);
+					}}
+				>
+					{isOpen ? 'CREATE FOOD －' : 'CREATE FOOD ＋'}
+				</Button>
+			</Wrapper>
 			{isOpen ? (
 				<Form>
 					<Input
@@ -96,17 +99,11 @@ const Create = (props) => {
 
 export default Create;
 
-export const Btn = styled.div`
+export const Wrapper = styled.div`
 	display: flex;
-	justify-content: center;
-	text-align: center;
-	width: 100%;
-	padding: 10px;
-	background: var(--light);
-	font-size: var(--p);
-	&:hover {
-		cursor: pointer;
-	}
+	flex-direction: column;
+	justify-content: flex-end;
+	height: 100%;
 `;
 
 export const Form = styled.div`

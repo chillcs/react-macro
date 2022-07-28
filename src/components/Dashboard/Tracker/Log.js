@@ -53,7 +53,7 @@ const Log = (props) => {
 											deleteLog(log.id);
 										}}
 									>
-										X
+										☓
 									</Btn>
 								</LogItem>
 							);
@@ -92,7 +92,7 @@ export const Heading = styled.div`
 export const LogItem = styled.div`
 	display: flex;
 	width: 100%;
-	padding: 2px 10px;
+	padding: 5px 10px;
 `;
 
 export const Cell = styled.div`

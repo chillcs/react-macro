@@ -1,6 +1,15 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import {
+	Library,
+	Table,
+	Row,
+	Cell,
+	Title,
+	Button,
+	ButtonSm,
+} from '../../Elements';
 
 const Add = (props) => {
 	const [quantity, setQuantity] = useState(0);
@@ -56,28 +65,28 @@ const Add = (props) => {
 
 	return (
 		<>
-			<Btn
+			<Button
 				onClick={() => {
 					setOpenList(!openList);
 				}}
 			>
-				Add food +
-			</Btn>
+				{openList ? 'ADD FOOD －' : 'ADD FOOD ＋'}
+			</Button>
 			{openList ? (
-				<Section>
+				<Library>
 					<Title>FOOD LIBRARY</Title>
-					<Column>
+					<Table>
 						{foodData.map((food, index) => {
 							return (
-								<Row key={index}>
-									<Top>
-										<Cell style={{ width: '30%' }}>{food.name}</Cell>
-										<Cell style={{ width: '20%' }}>{food.unit}</Cell>
-										<Cell style={{ width: '15%' }}>{food.fat} g</Cell>
-										<Cell style={{ width: '15%' }}>{food.carb} g</Cell>
-										<Cell style={{ width: '15%' }}>{food.protein} g</Cell>
+								<Wrapper key={index}>
+									<Row>
+										<Cell style={{ width: '35%' }}>{food.name}</Cell>
+										<Cell style={{ width: '15%' }}>{food.unit}</Cell>
+										<Cell style={{ width: '15%' }}>F: {food.fat} g</Cell>
+										<Cell style={{ width: '15%' }}>C: {food.carb} g</Cell>
+										<Cell style={{ width: '15%' }}>P: {food.protein} g</Cell>
 										{activeFood < 0 ? (
-											<BtnSm
+											<ButtonSm
 												id={index}
 												onClick={(event) => {
 													const target = event.currentTarget.id;
@@ -91,24 +100,24 @@ const Add = (props) => {
 													setProtein(food.protein);
 												}}
 											>
-												Add
-											</BtnSm>
+												＋
+											</ButtonSm>
 										) : (
 											parseInt(activeFood) === index && (
-												<BtnSm
+												<ButtonSm
 													id={index}
 													onClick={() =>
 														setActiveFood((activeFood) => (activeFood = -1))
 													}
 												>
-													Hide
-												</BtnSm>
+													－
+												</ButtonSm>
 											)
 										)}
 										{activeFood < 0
 											? null
 											: parseInt(activeFood) !== index && (
-													<BtnSm
+													<ButtonSm
 														id={index}
 														onClick={(event) => {
 															const target = event.currentTarget.id;
@@ -122,138 +131,64 @@ const Add = (props) => {
 															setProtein(food.protein);
 														}}
 													>
-														Add
-													</BtnSm>
+														＋
+													</ButtonSm>
 											  )}
-									</Top>
+									</Row>
 									<Bottom>
 										{parseInt(activeFood) === index && (
 											<Form>
 												<Input
 													type="text"
-													placeholder="Quantity"
+													placeholder="QUANTITY"
 													onChange={(event) => {
 														setQuantity(event.target.value);
 													}}
 												/>
 												<Submit
 													type="submit"
-													value="Log food"
+													value="SUBMIT"
 													onClick={createLog}
 												></Submit>
 											</Form>
 										)}
 									</Bottom>
-								</Row>
+								</Wrapper>
 							);
 						})}
-					</Column>
-				</Section>
+					</Table>
+				</Library>
 			) : null}
 		</>
 	);
 };
 export default Add;
 
-export const Btn = styled.div`
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 100%;
-	height: 50px;
-	background: var(--light);
-	font-size: var(--p);
-	&:hover {
-		cursor: pointer;
-	}
-`;
-
-export const Section = styled.div`
-	position: absolute;
-	top: 0;
-	left: 0;
-	display: flex;
-	flex-direction: column;
-	width: calc(100% - 20px);
-	height: calc(100% - 50px - 30px);
-	margin: 10px 10px;
-	background-color: var(--light);
-	overflow-y: auto;
-	z-index: 100;
-`;
-export const Title = styled.div`
-	width: 100%;
-	margin: 20px 0 15px 0;
-	text-align: center;
-	font-size: var(--p);
-`;
-
-export const Column = styled.div`
+export const Wrapper = styled.div`
 	display: flex;
 	flex-direction: column;
 	width: 100%;
-	padding: 10px 10px;
-	padding-bottom: 5px;
-	background: var(--light);
-`;
-
-export const Row = styled.div`
-	display: flex;
-	flex-direction: column;
-	width: 100%;
-`;
-
-export const Top = styled.div`
-	display: flex;
-	width: 100%;
-	padding: 5px 0;
-	border-bottom: 1px solid var(--medium);
-	&:last-of-type {
-		border-bottom: none;
-	}
-`;
-
-export const Cell = styled.div`
-	display: flex;
-	justify-content: flex-start;
-	text-align: left;
-	padding-left: 5px;
-	font-size: var(--xs);
-`;
-
-export const BtnSm = styled.div`
-	display: flex;
-	justify-content: center;
-	min-width: 20px;
-	margin-left: 10px;
-	font-size: var(--xs);
-	&:hover {
-		cursor: pointer;
-	}
 `;
 
 export const Bottom = styled.div`
 	display: flex;
 	justify-content: flex-end;
 	width: 100%;
-	padding: 5px 0;
-	border-bottom: 1px solid var(--medium);
-	&:last-of-type {
-		border-bottom: none;
-	}
 `;
 
 export const Form = styled.div`
 	display: flex;
-	padding: 10px 0 10px 10px;
+	padding: 5px 5px 10px 5px;
 	background: var(--light);
 `;
 
 export const Input = styled.input`
 	width: 50%;
 	padding: 5px 5px;
-	margin-left: 10px;
 	font-size: var(--xs);
+	background: var(--light);
+	border: 1px solid var(--dark);
+	border-radius: 0px;
 `;
 
 export const Submit = styled.input`
@@ -261,6 +196,9 @@ export const Submit = styled.input`
 	padding: 5px 5px;
 	margin-left: 10px;
 	font-size: var(--xs);
+	background: var(--dark);
+	color: var(--light);
+	border: none;
 	&:hover {
 		cursor: pointer;
 	}
