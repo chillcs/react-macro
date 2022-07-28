@@ -10,6 +10,13 @@ export const Page = styled.div`
 	overflow: auto;
 `;
 
+export const Title = styled.div`
+	width: 100%;
+	margin: 20px 0 5px 0;
+	text-align: center;
+	font-size: var(--p);
+`;
+
 export const Library = styled.div`
 	position: absolute;
 	top: 0;
@@ -51,13 +58,6 @@ export const Cell = styled.div`
 	text-align: left;
 	padding-left: 5px;
 	font-size: var(--xs);
-`;
-
-export const Title = styled.div`
-	width: 100%;
-	margin: 20px 0 5px 0;
-	text-align: center;
-	font-size: var(--p);
 `;
 
 export const Button = styled.div`
