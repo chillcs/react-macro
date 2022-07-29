@@ -120,7 +120,7 @@ export const Container = styled.div`
 	margin: 10px;
 	background-color: var(--light);
 	overflow-y: auto;
-	z-index: 30;
+	z-index: 60;
 `;
 
 export const Form = styled.div`

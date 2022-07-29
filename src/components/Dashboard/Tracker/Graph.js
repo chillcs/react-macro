@@ -3,10 +3,28 @@ import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 const Graph = (props) => {
+	const [fatGoal, setFatGoal] = useState(0);
+	const [carbGoal, setCarbGoal] = useState(0);
+	const [proteinGoal, setProteinGoal] = useState(0);
 	const [logData, setLogData] = useState([]);
 	const [fats, setFats] = useState([]);
 	const [carbs, setCarbs] = useState([]);
 	const [proteins, setProteins] = useState([]);
+
+	useEffect(() => {
+		const fatGoal = JSON.parse(localStorage.getItem('fatGoal'));
+		if (fatGoal) {
+			setFatGoal(fatGoal);
+		}
+		const carbGoal = JSON.parse(localStorage.getItem('carbGoal'));
+		if (carbGoal) {
+			setCarbGoal(carbGoal);
+		}
+		const proteinGoal = JSON.parse(localStorage.getItem('proteinGoal'));
+		if (proteinGoal) {
+			setProteinGoal(proteinGoal);
+		}
+	}, [props.data]);
 
 	useEffect(() => {
 		fetch('http://localhost:3001/logdata')
@@ -38,9 +56,9 @@ const Graph = (props) => {
 		);
 	}, [logData]);
 
-	const targetFats = 100;
-	const targetCarbs = 300;
-	const targetProteins = 150;
+	const targetFats = parseInt(fatGoal);
+	const targetCarbs = parseInt(carbGoal);
+	const targetProteins = parseInt(proteinGoal);
 	const targetTotal = targetFats + targetCarbs + targetProteins;
 	const targetFatsAdj = (targetFats / targetTotal) * 100;
 	const targetCarbsAdj = (targetCarbs / targetTotal) * 100;
@@ -48,7 +66,6 @@ const Graph = (props) => {
 	const fatsAdj = (fats / targetFats) * 100;
 	const carbsAdj = (carbs / targetCarbs) * 100;
 	const proteinsAdj = (proteins / targetProteins) * 100;
-
 	const targetCalories = targetFats * 9 + targetCarbs * 4 + targetProteins * 4;
 	const calories = fats * 9 + carbs * 4 + proteins * 4;
 	const widthAdj = (calories / targetCalories) * 100;

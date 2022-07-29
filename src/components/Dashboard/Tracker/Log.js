@@ -72,7 +72,7 @@ export const Section = styled.div`
 	display: flex;
 	flex-direction: column;
 	width: 100%;
-	height: calc(50% - 50px - 20px);
+	height: calc(50% - 45px - 50px - 20px);
 `;
 
 export const Column = styled.div`

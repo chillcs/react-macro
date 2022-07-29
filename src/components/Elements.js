@@ -28,7 +28,7 @@ export const Library = styled.div`
 	margin: 10px;
 	background-color: var(--light);
 	overflow-y: auto;
-	z-index: 20;
+	z-index: 50;
 `;
 
 export const Table = styled.div`
