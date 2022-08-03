@@ -13,7 +13,7 @@ const Create = (props) => {
 	const [isOpen, setIsOpen] = useState(false);
 
 	const createFood = () => {
-		fetch('http://localhost:3001/createfood', {
+		fetch('https://heroku-react-macro.herokuapp.com/createfood', {
 			method: 'POST',
 			headers: {
 				Accept: 'application/json',

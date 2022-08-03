@@ -24,7 +24,7 @@ const Add = (props) => {
 	const [logData, setLogData] = useState([]);
 
 	useEffect(() => {
-		fetch('http://localhost:3001/fooddata')
+		fetch('https://heroku-react-macro.herokuapp.com/fooddata')
 			.then((res) => res.json())
 			.then((data) => {
 				setFoodData(data);
@@ -32,7 +32,7 @@ const Add = (props) => {
 	}, []);
 
 	const createLog = () => {
-		fetch('http://localhost:3001/createlog', {
+		fetch('https://heroku-react-macro.herokuapp.com/createlog', {
 			method: 'POST',
 			headers: {
 				Accept: 'application/json',

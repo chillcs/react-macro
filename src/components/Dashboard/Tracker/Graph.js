@@ -27,7 +27,7 @@ const Graph = (props) => {
 	}, [props.data]);
 
 	useEffect(() => {
-		fetch('http://localhost:3001/logdata')
+		fetch('https://heroku-react-macro.herokuapp.com/logdata')
 			.then((res) => res.json())
 			.then((data) => {
 				setLogData(data);

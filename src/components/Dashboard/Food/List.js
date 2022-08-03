@@ -6,7 +6,7 @@ const List = (props) => {
 	const [foodData, setFoodData] = useState([]);
 
 	useEffect(() => {
-		fetch('http://localhost:3001/fooddata')
+		fetch('https://heroku-react-macro.herokuapp.com/fooddata')
 			.then((res) => res.json())
 			.then((data) => {
 				setFoodData(data);
@@ -14,7 +14,7 @@ const List = (props) => {
 	}, [props.data]);
 
 	const deleteFood = (id) => {
-		fetch(`http://localhost:3001/deletefood/${id}`, {
+		fetch(`https://heroku-react-macro.herokuapp.com/deletefood/${id}`, {
 			method: 'DELETE',
 		}).then(() => {
 			setFoodData(

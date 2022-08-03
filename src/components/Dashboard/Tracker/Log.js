@@ -6,7 +6,7 @@ const Log = (props) => {
 	const [logData, setLogData] = useState([]);
 
 	useEffect(() => {
-		fetch('http://localhost:3001/logdata')
+		fetch('https://heroku-react-macro.herokuapp.com/logdata')
 			.then((res) => res.json())
 			.then((data) => {
 				setLogData(data);
@@ -14,7 +14,7 @@ const Log = (props) => {
 	}, [props.data]);
 
 	const deleteLog = (id) => {
-		fetch(`http://localhost:3001/deletelog/${id}`, {
+		fetch(`https://heroku-react-macro.herokuapp.com/deletelog/${id}`, {
 			method: 'DELETE',
 		}).then(() => {
 			setLogData(
