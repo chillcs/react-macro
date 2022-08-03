@@ -140,7 +140,7 @@ export const Section = styled.div`
 	flex-direction: column;
 	justify-content: flex-end;
 	width: 100%;
-	height: 50%;
+	height: 40%;
 `;
 
 export const Macros = styled.div`
@@ -183,12 +183,14 @@ export const Title = styled.div`
 	position: absolute;
 	width: 100%;
 	text-align: center;
+	font-size: var(--h3);
 	color: var(--medium);
 	z-index: 10;
 `;
 
 export const Amount = styled.div`
 	display: flex;
+	font-size: var(--p);
 `;
 
 export const Calories = styled.div`
@@ -203,7 +205,7 @@ export const TargetCalories = styled.div`
 	display: flex;
 	align-items: center;
 	width: 100%;
-	height: 25px;
+	height: 50px;
 	margin-bottom: 10px;
 	background: var(--light);
 `;
@@ -214,6 +216,6 @@ export const Logged = styled.div`
 	justify-content: center;
 	align-items: center;
 	max-width: 100%;
-	height: 25px;
+	height: 50px;
 	background: var(--alternate);
 `;

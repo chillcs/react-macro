@@ -30,7 +30,7 @@ const Goal = (props) => {
 			</Wrapper>
 			{isOpen ? (
 				<Container>
-					<Title>ENTER DAILY MACRO GOALS</Title>
+					<Title>ENTER MACROS</Title>
 					<Form>
 						<Input
 							type="text"
@@ -74,7 +74,7 @@ export const Wrapper = styled.div`
 export const ButtonG = styled.div`
 	display: flex;
 	justify-content: center;
-	font-size: var(--xs);
+	font-size: var(--h3);
 	&:hover {
 		cursor: pointer;
 	}
@@ -86,8 +86,8 @@ export const Container = styled.div`
 	left: 0;
 	display: flex;
 	flex-direction: column;
-	width: calc(100%);
-	height: calc(100%);
+	width: 100%;
+	height: -webkit-fill-available;
 	background-color: var(--light);
 	z-index: 30;
 `;
@@ -113,7 +113,7 @@ export const Submit = styled.input`
 	width: 100%;
 	padding: 10px;
 	margin: 5px 0;
-	font-size: var(--p);
+	font-size: var(--h3);
 	background: var(--dark);
 	color: var(--light);
 	border: none;

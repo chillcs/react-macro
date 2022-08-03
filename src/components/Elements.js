@@ -14,7 +14,7 @@ export const Title = styled.div`
 	width: 100%;
 	margin: 20px 0 5px 0;
 	text-align: center;
-	font-size: var(--p);
+	font-size: var(--h2);
 `;
 
 export const Library = styled.div`
@@ -67,7 +67,7 @@ export const Button = styled.div`
 	width: 100%;
 	height: 50px;
 	background: var(--light);
-	font-size: var(--p);
+	font-size: var(--h3);
 	&:hover {
 		cursor: pointer;
 	}

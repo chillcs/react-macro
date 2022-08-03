@@ -72,7 +72,7 @@ export const Section = styled.div`
 	display: flex;
 	flex-direction: column;
 	width: 100%;
-	height: calc(50% - 45px - 50px - 20px);
+	height: 30%;
 `;
 
 export const Column = styled.div`
@@ -86,13 +86,14 @@ export const Heading = styled.div`
 	display: flex;
 	justify-content: flex-start;
 	margin-bottom: 10px;
-	font-size: var(--p);
+	font-size: var(--h3);
 `;
 
 export const LogItem = styled.div`
 	display: flex;
 	width: 100%;
 	padding: 5px 10px;
+	font-size: var(--p);
 `;
 
 export const Cell = styled.div`

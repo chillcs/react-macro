@@ -13,7 +13,6 @@ const Food = () => {
 	return (
 		<>
 			<Page>
-				<h1>test</h1>
 				<List data={data} />
 				<Create updateData={updateData} />
 			</Page>

@@ -77,7 +77,7 @@ export const Title = styled.div`
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	font-size: 25px;
+	font-size: var(--h2);
 	color: var(--light);
 `;
 
@@ -88,6 +88,7 @@ export const Btn = styled.div`
 	transform: translate(0, -50%);
 	padding: 20px;
 	margin-right: 10px;
+	font-size: var(--p);
 	background: var(--light);
 	&:hover {
 		cursor: pointer;
@@ -120,6 +121,7 @@ export const Tab = styled.div`
 	align-items: center;
 	width: 100%;
 	padding: 15px 10px;
+	font-size: var(--p);
 	color: var(--light);
 	&:hover {
 		cursor: pointer;
